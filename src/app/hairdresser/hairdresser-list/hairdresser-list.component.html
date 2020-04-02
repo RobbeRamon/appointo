@@ -1,7 +1,13 @@
 <div class="container">
     <div class="row">
-        <app-hairdresser class="col-4"></app-hairdresser>
-        <app-hairdresser class="col-4"></app-hairdresser>
-        <app-hairdresser class="col-4"></app-hairdresser>
+        <div *ngIf="hairdressers$ | async as hairdressers; else loadingOrError">
+            <div *ngFor="let localHairdresser of hairdressers">
+                <app-hairdresser class="col-4" [name]="localHairdresser.name"></app-hairdresser>
+            </div>
+        </div>
+
+        <ng-template #loadingOrError>
+            error
+        </ng-template>
     </div>
 </div>
