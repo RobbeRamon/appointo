@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 
 @Component({
   selector: "app-find-hairdresser",
@@ -6,7 +7,17 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./find-hairdresser.component.scss"]
 })
 export class FindHairdresserComponent implements OnInit {
+  public hairdresser: FormGroup;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.hairdresser = new FormGroup({
+      name: new FormControl("Hairdresser")
+    });
+  }
+
+  onSubmit() {
+    console.log(this.hairdresser.value.name);
+  }
 }

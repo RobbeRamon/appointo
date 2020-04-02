@@ -2,17 +2,18 @@
 <div id="header">
     <div class="container">
         <div class="row">
-            <mdb-card class="col-6">
+            <mdb-card class="col-lg-6 col-sm-12">
                 <mdb-card-body>
-                    <form id="find-hairdresser">
+                    <form id="find-hairdresser" [formGroup]="hairdresser" (ngSubmit)="onSubmit()">
                         <div class="col-12 pt-3">
                             <h1>kapper zoeken</h1>
                         </div>
                         <div class="row">
                             <div class="md-form col-lg-6 col-xs-12">
                                 <mdb-icon fas icon="cut" class="prefix"></mdb-icon>
-                                <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="25"
-                                    type="text" class="form-control" id="Name" placeholder="Zoeken op salonnaam">
+                                <input mdbInput mdbValidate minLength="8" maxLength="25" type="text"
+                                    class="form-control" id="Name" placeholder="Zoeken op salonnaam"
+                                    formControlName="name" aria-label="name">
                                 <!-- <label for="form9">Type your e-mail</label> -->
                                 <!-- <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Input invalid</mdb-error>
                             <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">Input valid</mdb-success> -->
@@ -20,22 +21,25 @@
 
                             <div class="md-form col-lg-6 col-xs-12">
                                 <mdb-icon fas icon="location-arrow" class="prefix"></mdb-icon>
-                                <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10"
-                                    maxLength="25" type="text" class="form-control" id="City"
-                                    placeholder="Zoeken op locatie">
+                                <input mdbInput mdbValidate minLength="10" maxLength="25" type="text"
+                                    class="form-control" id="City" placeholder="Zoeken op locatie">
                                 <!-- <label for="form10">Type your password</label> -->
                                 <!-- <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Input invalid
                             </mdb-error>
                             <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Input valid
                             </mdb-success> -->
                             </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
                         </div>
                     </form>
                 </mdb-card-body>
             </mdb-card>
-            <div class="col-6">
+            <div class="col-6 d-none d-lg-block">
                 <h1 class="text-white ml-5 mt-5">Vind eenvoudig de kapper van uw volgende knipbeurt</h1>
             </div>
         </div>
     </div>
 </div>
+<!-- SEARCH {{ hairdresser.value | json }} -->
