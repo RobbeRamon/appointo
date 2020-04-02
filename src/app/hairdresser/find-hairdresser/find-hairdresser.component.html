@@ -1,1 +1,35 @@
-<p>find-hairdresser works!</p>
+<!-- <form [formGroup]="validationForm"> -->
+<div id="header">
+    <div class="container">
+        <form class="col-12" id="find-hairdresser">
+            <div class="col-12 pt-3">
+                <h1>kapper zoeken</h1>
+            </div>
+            <div class="row">
+                <div class="md-form col-lg-5 col-xs-12">
+                    <mdb-icon fas icon="cut" class="prefix"></mdb-icon>
+                    <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="25" type="text"
+                        class="form-control" id="Name" placeholder="Vul een salonnaam in">
+                    <!-- <label for="form9">Type your e-mail</label> -->
+                    <!-- <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Input invalid</mdb-error>
+                <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">Input valid</mdb-success> -->
+                </div>
+
+                <div class="md-form col-lg-5 col-xs-12">
+                    <mdb-icon fas icon="location-arrow" class="prefix"></mdb-icon>
+                    <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="25"
+                        type="text" class="form-control" id="City" placeholder="Vul een stad in">
+                    <!-- <label for="form10">Type your password</label> -->
+                    <!-- <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Input invalid
+                </mdb-error>
+                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Input valid
+                </mdb-success> -->
+                </div>
+                <div class="md-form col-lg-2 col-xs-12">
+                    <button type="button" mdbBtn color="primary" mdbWavesEffect>Zoeken</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

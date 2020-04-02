@@ -3,11 +3,12 @@ import { NgModule } from "@angular/core";
 
 import { AppComponent } from "./app.component";
 import { MainNavComponent } from "./main-nav/main-nav.component";
-import { MDBBootstrapModule } from "angular-bootstrap-md";
+import { MdbootstrapModule } from "./mdbootstrap/mdbootstrap.module";
+import { HairdresserModule } from "./hairdresser/hairdresser.module";
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent],
-  imports: [BrowserModule, MDBBootstrapModule.forRoot()],
+  imports: [BrowserModule, MdbootstrapModule, HairdresserModule],
   providers: [],
   bootstrap: [AppComponent]
 })

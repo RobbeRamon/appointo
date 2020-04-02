@@ -1,9 +1,32 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { MDBBootstrapModule } from "angular-bootstrap-md";
+import {
+  NavbarModule,
+  WavesModule,
+  ButtonsModule,
+  IconsModule,
+  DropdownModule,
+  InputUtilitiesModule
+} from "angular-bootstrap-md";
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MDBBootstrapModule.forRoot()]
+  imports: [
+    CommonModule,
+    NavbarModule,
+    WavesModule.forRoot(),
+    ButtonsModule.forRoot(),
+    IconsModule,
+    DropdownModule.forRoot(),
+    InputUtilitiesModule
+  ],
+  exports: [
+    NavbarModule,
+    WavesModule,
+    ButtonsModule,
+    IconsModule,
+    DropdownModule,
+    InputUtilitiesModule
+  ]
 })
 export class MdbootstrapModule {}
