@@ -6,7 +6,8 @@ import {
   ButtonsModule,
   IconsModule,
   DropdownModule,
-  InputUtilitiesModule
+  InputUtilitiesModule,
+  CardsModule
 } from "angular-bootstrap-md";
 
 @NgModule({
@@ -18,7 +19,8 @@ import {
     ButtonsModule.forRoot(),
     IconsModule,
     DropdownModule.forRoot(),
-    InputUtilitiesModule
+    InputUtilitiesModule,
+    CardsModule
   ],
   exports: [
     NavbarModule,
@@ -26,7 +28,8 @@ import {
     ButtonsModule,
     IconsModule,
     DropdownModule,
-    InputUtilitiesModule
+    InputUtilitiesModule,
+    CardsModule
   ]
 })
 export class MdbootstrapModule {}
