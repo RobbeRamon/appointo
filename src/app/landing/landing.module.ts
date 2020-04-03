@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { FindHairdresserComponent } from "./find-hairdresser/find-hairdresser.component";
+import { ReactiveFormsModule } from "@angular/forms";
+import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 
 @NgModule({
-  declarations: [FindHairdresserComponent],
-  imports: [CommonModule],
-  exports: [FindHairdresserComponent]
+  declarations: [],
+  imports: [CommonModule, MdbootstrapModule, ReactiveFormsModule],
+  exports: []
 })
 export class LandingModule {}

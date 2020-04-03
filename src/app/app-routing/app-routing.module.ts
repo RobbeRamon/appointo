@@ -6,8 +6,10 @@ import { HairdresserListComponent } from "../hairdresser/hairdresser-list/hairdr
 import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
 import { HairdresserDetailComponent } from "../hairdresser-detail/hairdresser-detail/hairdresser-detail.component";
 import { HairdresserResolver } from "../hairdresser-detail/HairdresserResolver";
+import { FindHairdresserComponent } from "../hairdresser/find-hairdresser/find-hairdresser.component";
 
 const appRoutes: Routes = [
+  { path: "", component: FindHairdresserComponent },
   { path: "hairdresser/list", component: HairdresserListComponent },
   {
     path: "hairdresser/detail/:id",

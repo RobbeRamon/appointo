@@ -6,7 +6,6 @@ import { AppComponent } from "./app.component";
 import { MainNavComponent } from "./main-nav/main-nav.component";
 import { MdbootstrapModule } from "./mdbootstrap/mdbootstrap.module";
 import { HairdresserModule } from "./hairdresser/hairdresser.module";
-import { HairdresserListComponent } from "./hairdresser/hairdresser-list/hairdresser-list.component";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { HairdresserDetailModule } from "./hairdresser-detail/hairdresser-detail.module";

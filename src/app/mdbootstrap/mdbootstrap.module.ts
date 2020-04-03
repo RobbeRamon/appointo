@@ -8,7 +8,8 @@ import {
   DropdownModule,
   InputUtilitiesModule,
   CardsModule,
-  CarouselModule
+  CarouselModule,
+  MDBBootstrapModule
 } from "angular-bootstrap-md";
 
 @NgModule({
