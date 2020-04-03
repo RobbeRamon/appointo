@@ -4,28 +4,25 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { HairdresserComponent } from "./hairdresser/hairdresser.component";
 import { TreatmentComponent } from "./treatment/treatment.component";
-import { FindHairdresserComponent } from "./find-hairdresser/find-hairdresser.component";
 import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HairdresserListComponent } from "./hairdresser-list/hairdresser-list.component";
+import { RouterModule } from "@angular/router";
+import { AppRoutingModule } from "../app-routing/app-routing.module";
 
 @NgModule({
   declarations: [
     HairdresserComponent,
     TreatmentComponent,
-    FindHairdresserComponent,
     HairdresserListComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     MdbootstrapModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
-  exports: [
-    FindHairdresserComponent,
-    HairdresserComponent,
-    HairdresserListComponent
-  ]
+  exports: [HairdresserComponent, HairdresserListComponent]
 })
 export class HairdresserModule {}

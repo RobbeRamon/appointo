@@ -2,7 +2,8 @@
 <mdb-card>
     <div class="view rgba-white-slight waves-light" mdbWavesEffect>
         <!-- Card img -->
-        <mdb-card-img src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg" alt="Card image cap">
+        <mdb-card-img src="https://cdn.pixabay.com/photo/2019/03/08/20/17/beauty-salon-4043096_960_720.jpg"
+            alt="Card image cap">
         </mdb-card-img>
         <a>
             <div class="mask"></div>
@@ -12,7 +13,7 @@
     <mdb-card-body>
         <!--Title-->
         <mdb-card-title>
-            <h4>{{this.name}}</h4>
+            <h4>{{this.hairdresser.name}}</h4>
         </mdb-card-title>
 
         <!--Text-->
@@ -20,7 +21,7 @@
             content.
         </mdb-card-text>
 
-        <a href="#" mdbBtn color="primary" mdbWavesEffect>Button</a>
+        <a mdbBtn color="primary" mdbWavesEffect [routerLink]="['/hairdresser/detail']">Button</a>
     </mdb-card-body>
 </mdb-card>
 <!-- Card -->

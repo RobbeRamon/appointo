@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { Hairdresser } from "../../hairdresser.model";
 
 @Component({
   selector: "app-hairdresser",
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./hairdresser.component.scss"]
 })
 export class HairdresserComponent implements OnInit {
-  @Input() name: string;
+  @Input() hairdresser: Hairdresser;
 
   constructor() {}
 

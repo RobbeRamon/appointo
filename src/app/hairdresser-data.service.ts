@@ -17,4 +17,10 @@ export class HairdresserDataService {
       map((list: any[]): Hairdresser[] => list.map(Hairdresser.fromJSON))
     );
   }
+
+  getHairdresser$(id: string) {
+    return this.http
+      .get(`${environment.apiUrl}/recipes/${id}`)
+      .pipe(map(Hairdresser.fromJSON));
+  }
 }

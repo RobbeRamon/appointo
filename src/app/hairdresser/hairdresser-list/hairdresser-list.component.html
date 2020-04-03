@@ -1,13 +1,19 @@
 <div class="container">
-    <div class="row">
-        <div *ngIf="hairdressers$ | async as hairdressers; else loadingOrError">
-            <div *ngFor="let localHairdresser of hairdressers">
-                <app-hairdresser class="col-4" [name]="localHairdresser.name"></app-hairdresser>
-            </div>
+    <div *ngIf="hairdressers$ | async as hairdressers; else loadingOrError">
+        <div *ngFor="let localHairdresser of hairdressers" class="row">
+            <app-hairdresser class="col-4" [hairdresser]="localHairdresser"></app-hairdresser>
         </div>
-
-        <ng-template #loadingOrError>
-            error
-        </ng-template>
     </div>
 </div>
+
+<ng-template #loadingOrError>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage; else loading">
+        Error loading the hairdresser list: {{ errorMessage }}. <br />
+        Please try again later.
+    </div>
+</ng-template>
+<ng-template #loading>
+    <div class="text-center spinner-border text-info" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</ng-template>

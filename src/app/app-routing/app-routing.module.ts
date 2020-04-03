@@ -4,11 +4,11 @@ import { CommonModule } from "@angular/common";
 
 import { HairdresserListComponent } from "../hairdresser/hairdresser-list/hairdresser-list.component";
 import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
-import { HairdresserComponent } from "../hairdresser/hairdresser/hairdresser.component";
+import { HairdresserDetailComponent } from "../hairdresser-detail/hairdresser-detail/hairdresser-detail.component";
 
 const appRoutes: Routes = [
   { path: "hairdresser/list", component: HairdresserListComponent },
-  { path: "hairdresser/detail/:id", component: HairdresserComponent },
+  { path: "hairdresser/detail/:id", component: HairdresserDetailComponent },
   { path: "**", component: PageNotFoundComponent }
 ];
 
