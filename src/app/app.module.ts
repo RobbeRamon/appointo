@@ -9,6 +9,7 @@ import { HairdresserModule } from "./hairdresser/hairdresser.module";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { HairdresserDetailModule } from "./hairdresser-detail/hairdresser-detail.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // const appRoutes: Routes = [
 //   { path: "hairdresser/list", component: HairdresserListComponent },
@@ -24,7 +25,8 @@ import { HairdresserDetailModule } from "./hairdresser-detail/hairdresser-detail
     HairdresserModule,
     //RouterModule.forRoot(appRoutes),
     AppRoutingModule,
-    HairdresserDetailModule
+    HairdresserDetailModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

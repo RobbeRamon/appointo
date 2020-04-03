@@ -13,19 +13,19 @@ import { FindHairdresserComponent } from "./find-hairdresser/find-hairdresser.co
   declarations: [
     HairdresserComponent,
     HairdresserListComponent,
-    FindHairdresserComponent
+    FindHairdresserComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     MdbootstrapModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   exports: [
     HairdresserComponent,
     HairdresserListComponent,
-    FindHairdresserComponent
-  ]
+    FindHairdresserComponent,
+  ],
 })
 export class HairdresserModule {}
