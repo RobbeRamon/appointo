@@ -17,9 +17,6 @@ export class HairdresserDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get("id");
-    this.hairdresserDateService
-      .getHairdresser$(id)
-      .subscribe(item => (this.hairdresser = item));
+    this.route.data.subscribe(item => (this.hairdresser = item["hairdresser"]));
   }
 }

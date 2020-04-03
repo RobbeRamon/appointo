@@ -18,9 +18,9 @@ export class HairdresserDataService {
     );
   }
 
-  getHairdresser$(id: string) {
+  getHairdresser$(id: string): Observable<Hairdresser> {
     return this.http
-      .get(`${environment.apiUrl}/recipes/${id}`)
+      .get(`${environment.apiUrl}/hairdressers/${id}`)
       .pipe(map(Hairdresser.fromJSON));
   }
 }
