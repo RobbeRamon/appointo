@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { Hairdresser } from "../hairdresser.model";
-import { HairdresserDataService } from "../hairdresser-data.service";
 import { Observable, EMPTY } from "rxjs";
 import { catchError } from "rxjs/operators";
+import { Hairdresser } from "src/app/hairdresser.model";
+import { HairdresserDataService } from "src/app/hairdresser-data.service";
 
 @Component({
   selector: "app-hairdresser-list",
