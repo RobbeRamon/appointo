@@ -1,5 +1,15 @@
-<mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Vrouwen">Content 1</mat-tab>
+<mat-tab-group mat-align-tabs="center" class="col-xl-6 col-md-12">
+    <mat-tab label="Vrouwen">
+        <div *ngFor="let treatment of hairdresser.treatments">
+            <mdb-card>
+                <mdb-card-body>
+                    {{ treatment.name }}
+                    <span class="pl-20">€15</span>
+                    <a href="" mdbBtn color="primary">Toevoegen</a>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
+    </mat-tab>
     <mat-tab label="Mannen">Content 2</mat-tab>
     <mat-tab label="Kinderen">Content 3</mat-tab>
 </mat-tab-group>
