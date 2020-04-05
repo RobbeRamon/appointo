@@ -18,9 +18,4 @@ export class BookedTreatmentDataService {
   bookTreatment(treatment: Treatment) {
     this._bookedTreatments = [...this._bookedTreatments, treatment];
   }
-
-  bookTreatments(treatments: Treatment[]) {
-    this._bookedTreatments = treatments;
-    console.log(this._bookedTreatments);
-  }
 }

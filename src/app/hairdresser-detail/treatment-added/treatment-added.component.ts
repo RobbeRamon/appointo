@@ -10,16 +10,14 @@ import { Hairdresser } from "src/app/hairdresser.model";
 })
 export class TreatmentAddedComponent implements OnInit {
   @Input() public hairdresser: Hairdresser;
-  private _treatments: Treatment[];
 
   constructor(private _bookedTreatmentDataService: BookedTreatmentDataService) {
-    this._treatments = [];
   }
 
   ngOnInit(): void {}
 
   get treatments() {
-    return this._treatments;
+    return this._bookedTreatmentDataService.bookedTreatments;
   }
 
   totalPrice(): number {
@@ -27,19 +25,13 @@ export class TreatmentAddedComponent implements OnInit {
   }
 
   receiveAddedTreatment($event) {
-    let treatment: Treatment = this._treatments.filter(tr => tr.id == $event.id)[0];
+    let treatment: Treatment = this._bookedTreatmentDataService.bookedTreatments.filter(tr => tr.id == $event.id)[0];
 
     if (treatment){
       treatment.amount++;
     } else {
       $event.amount = 1;
-      this._treatments = [...this._treatments, $event];
+      this._bookedTreatmentDataService.bookTreatment($event);
     }  
-    
-    
-  }
-
-  confirmTreatments() {
-    this._bookedTreatmentDataService.bookTreatments(this._treatments);
   }
 }
