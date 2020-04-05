@@ -7,7 +7,7 @@ import { Hairdresser } from "src/app/hairdresser.model";
   styleUrls: ["./hairdresser-slider.component.scss"],
 })
 export class HairdresserSliderComponent implements OnInit {
-  @Input() hairdresser: Hairdresser;
+  @Input() public hairdresser: Hairdresser;
 
   constructor() {}
 

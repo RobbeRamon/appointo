@@ -5,13 +5,15 @@ import { HairdresserDetailComponent } from "./hairdresser-detail/hairdresser-det
 import { HairdresserSliderComponent } from "./hairdresser-slider/hairdresser-slider.component";
 import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 import { TreatmentListComponent } from "./treatment-list/treatment-list.component";
+import { TreatmentAddedComponent } from "./treatment-added/treatment-added.component";
 
 @NgModule({
   declarations: [
     HairdresserDetailComponent,
     HairdresserSliderComponent,
-    TreatmentListComponent
+    TreatmentListComponent,
+    TreatmentAddedComponent,
   ],
-  imports: [CommonModule, MdbootstrapModule, MaterialModule]
+  imports: [CommonModule, MdbootstrapModule, MaterialModule],
 })
 export class HairdresserDetailModule {}

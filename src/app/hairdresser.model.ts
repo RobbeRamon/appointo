@@ -8,7 +8,7 @@ interface HairdresserJson {
 
 export class Hairdresser {
   private _id: number;
-  private _treatments;
+  private _treatments: Treatment[];
 
   constructor(private _name: string) {}
 
@@ -28,7 +28,8 @@ export class Hairdresser {
     const hairdresser = new Hairdresser(json.name);
     hairdresser._id = json.id;
     hairdresser._treatments = json.treatments.map(
-      (tr): TreatmentJson => new Treatment(tr.id, tr.name, tr.duration)
+      (tr: TreatmentJson): Treatment =>
+        new Treatment(tr.id, tr.name, tr.duration)
     );
     return hairdresser;
   }

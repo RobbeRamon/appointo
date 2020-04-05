@@ -1,5 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Hairdresser } from "src/app/hairdresser.model";
+import { BookedTreatmentDataService } from "src/app/hairdresser-detail/booked-treatment-data.service";
+import { Treatment } from "src/app/treatment.model";
 
 @Component({
   selector: "app-treatment-list",
@@ -7,9 +9,14 @@ import { Hairdresser } from "src/app/hairdresser.model";
   styleUrls: ["./treatment-list.component.scss"],
 })
 export class TreatmentListComponent implements OnInit {
-  @Input() hairdresser: Hairdresser;
+  @Input() public hairdresser: Hairdresser;
+  @Output() public newTreatment = new EventEmitter<Treatment>();
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  bookTreatment(treatment: Treatment) {
+    this.newTreatment.emit(treatment);
+  }
 }

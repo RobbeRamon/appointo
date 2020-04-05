@@ -4,10 +4,10 @@ import { Hairdresser } from "../../hairdresser.model";
 @Component({
   selector: "app-hairdresser",
   templateUrl: "./hairdresser.component.html",
-  styleUrls: ["./hairdresser.component.scss"]
+  styleUrls: ["./hairdresser.component.scss"],
 })
 export class HairdresserComponent implements OnInit {
-  @Input() hairdresser: Hairdresser;
+  @Input() public hairdresser: Hairdresser;
 
   constructor() {}
 
