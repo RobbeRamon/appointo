@@ -36,7 +36,7 @@ export class TreatmentAddedComponent implements OnInit {
       this._treatments = [...this._treatments, $event];
     }  
     
-    this._bookedTreatmentDataService.bookTreatment($event);
+    
   }
 
   confirmTreatments() {
