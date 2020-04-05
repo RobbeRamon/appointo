@@ -7,6 +7,7 @@ import { PageNotFoundComponent } from "../page-not-found/page-not-found.componen
 import { HairdresserDetailComponent } from "../hairdresser-detail/hairdresser-detail/hairdresser-detail.component";
 import { HairdresserResolver } from "../hairdresser-detail/HairdresserResolver";
 import { FindHairdresserComponent } from "../hairdresser/find-hairdresser/find-hairdresser.component";
+import { CreateAppointmentComponent } from '../create-appointment/create-appointment/create-appointment.component';
 
 const appRoutes: Routes = [
   { path: "", component: FindHairdresserComponent },
@@ -15,6 +16,11 @@ const appRoutes: Routes = [
     path: "kapper/detail/:id",
     component: HairdresserDetailComponent,
     resolve: { hairdresser: HairdresserResolver }
+  },
+  {
+    path: "kapper/afspraak/maak/:id",
+    component: CreateAppointmentComponent,
+    resolve:{ hairdres: HairdresserResolver}
   },
   { path: "**", component: PageNotFoundComponent }
 ];

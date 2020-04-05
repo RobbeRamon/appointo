@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { BookedTreatmentDataService } from "src/app/hairdresser-detail/booked-treatment-data.service";
+import { BookedTreatmentDataService } from "src/app/booked-treatment-data.service";
 import { Treatment } from "src/app/treatment.model";
 import { Hairdresser } from "src/app/hairdresser.model";
 
