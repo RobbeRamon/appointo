@@ -12,7 +12,7 @@ export class TreatmentAddedComponent implements OnInit {
   @Input() public hairdresser: Hairdresser;
   private _treatments: Treatment[];
 
-  constructor() {
+  constructor(private _bookedTreatmentDataService: BookedTreatmentDataService) {
     this._treatments = [];
   }
 
@@ -34,6 +34,12 @@ export class TreatmentAddedComponent implements OnInit {
     } else {
       $event.amount = 1;
       this._treatments = [...this._treatments, $event];
-    }    
+    }  
+    
+    this._bookedTreatmentDataService.bookTreatment($event);
+  }
+
+  confirmTreatments() {
+    this._bookedTreatmentDataService.bookTreatments(this._treatments);
   }
 }

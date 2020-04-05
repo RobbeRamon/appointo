@@ -18,8 +18,8 @@
                     <div class="list-group-item">
                         Totaalprijs: €{{this.totalPrice()}}
                     </div>
-                    <div class="">
-                        <button mdbBtn color="primary" class="add float-right">Bevestigen</button>
+                    <div>
+                        <button mdbBtn color="primary" class="add float-right" (click)="confirmTreatments()">Bevestigen</button>
                     </div>
                 </div>
                 <ng-template #noTreatments>
