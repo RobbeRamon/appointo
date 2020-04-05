@@ -10,9 +10,9 @@ import { FindHairdresserComponent } from "../hairdresser/find-hairdresser/find-h
 
 const appRoutes: Routes = [
   { path: "", component: FindHairdresserComponent },
-  { path: "hairdresser/list", component: HairdresserListComponent },
+  { path: "kappers/lijst", component: HairdresserListComponent },
   {
-    path: "hairdresser/detail/:id",
+    path: "kapper/detail/:id",
     component: HairdresserDetailComponent,
     resolve: { hairdresser: HairdresserResolver }
   },
