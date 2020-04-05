@@ -13,7 +13,6 @@ export class HairdresserDataService {
 
   get hairdressers$(): Observable<Hairdresser[]> {
     return this.http.get(`${environment.apiUrl}/hairdressers`).pipe(
-      tap(console.log),
       map((list: any[]): Hairdresser[] => list.map(Hairdresser.fromJSON))
     );
   }
