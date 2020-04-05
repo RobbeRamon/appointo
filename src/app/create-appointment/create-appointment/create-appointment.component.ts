@@ -20,4 +20,8 @@ export class CreateAppointmentComponent implements OnInit {
   get treatments() {
     return this._bookedTreatmentDataService.bookedTreatments;
   }
+
+  get hairdresserFromDataService() {
+    return this._bookedTreatmentDataService.hairdresser;
+  }
 }

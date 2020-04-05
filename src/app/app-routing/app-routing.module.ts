@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   {
     path: "kapper/afspraak/maak/:id",
     component: CreateAppointmentComponent,
-    resolve:{ hairdres: HairdresserResolver}
+    resolve:{ hairdresser: HairdresserResolver}
   },
   { path: "**", component: PageNotFoundComponent }
 ];

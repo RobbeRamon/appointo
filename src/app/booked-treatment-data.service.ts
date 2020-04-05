@@ -28,4 +28,8 @@ export class BookedTreatmentDataService {
   bookTreatment(treatment: Treatment) {
     this._bookedTreatments = [...this._bookedTreatments, treatment];
   }
+
+  resetTreatments() {
+    this._bookedTreatments = [];
+  }
 }

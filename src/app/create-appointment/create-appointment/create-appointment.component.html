@@ -1,1 +1,10 @@
-<div *ngIf="true">true</div>
+<div *ngIf="treatments.length > 0 else noSelectedTreatments">
+    <div *ngIf="hairdresserFromDataService != null && hairdresserFromDataService.id == hairdresser.id else noSelectedTreatments">
+        true
+    </div>    
+</div>
+<ng-template #noSelectedTreatments>
+    <div class="alert alert-danger" role="alert">
+        Er zijn geen behandelingen geselecteerd voor deze kapper.
+    </div>
+</ng-template>

@@ -25,13 +25,27 @@ export class TreatmentAddedComponent implements OnInit {
   }
 
   receiveAddedTreatment($event) {
-    let treatment: Treatment = this._bookedTreatmentDataService.bookedTreatments.filter(tr => tr.id == $event.id)[0];
+    if(this._bookedTreatmentDataService.hairdresser != null) {
+      if(this._bookedTreatmentDataService.hairdresser.id == this.hairdresser.id) {
+        let treatment: Treatment = this._bookedTreatmentDataService.bookedTreatments.filter(tr => tr.id == $event.id)[0];
 
-    if (treatment){
-      treatment.amount++;
+        if (treatment){
+          treatment.amount++;
+        } else {
+          $event.amount = 1;
+          this._bookedTreatmentDataService.bookTreatment($event);
+        } 
+      } else {
+        this._bookedTreatmentDataService.resetTreatments();
+        this._bookedTreatmentDataService.hairdresser = this.hairdresser;
+        $event.amount = 1;
+        this._bookedTreatmentDataService.bookTreatment($event);
+      }
     } else {
+      this._bookedTreatmentDataService.hairdresser = this.hairdresser;
       $event.amount = 1;
       this._bookedTreatmentDataService.bookTreatment($event);
-    }  
+    }
+ 
   }
 }
