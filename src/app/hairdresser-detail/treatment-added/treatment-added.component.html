@@ -11,11 +11,16 @@
                 <div *ngIf="treatments.length > 0; else noTreatments">
                     <div *ngFor="let treatment of treatments" class="list-group-item waves-light">
                         {{treatment.name}}
+                        <div *ngIf="treatment.amount > 1" class="d-inline-block amount">
+                            x{{treatment.amount}}
+                        </div>                        
+                    </div>
+                    <div class="list-group-item">
+                        Totaalprijs: €{{this.totalPrice()}}
                     </div>
                     <div class="">
                         <button mdbBtn color="primary" class="add float-right">Bevestigen</button>
                     </div>
-
                 </div>
                 <ng-template #noTreatments>
                     <div class="list-group-item waves-light">

@@ -22,8 +22,18 @@ export class TreatmentAddedComponent implements OnInit {
     return this._treatments;
   }
 
+  totalPrice(): number {
+    return 15;
+  }
+
   receiveAddedTreatment($event) {
-    console.log($event);
-    this._treatments = [...this._treatments, $event];
+    let treatment: Treatment = this._treatments.filter(tr => tr.id == $event.id)[0];
+
+    if (treatment){
+      treatment.amount++;
+    } else {
+      $event.amount = 1;
+      this._treatments = [...this._treatments, $event];
+    }    
   }
 }
