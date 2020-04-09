@@ -1,7 +1,41 @@
 <div *ngIf="treatments.length > 0 else noSelectedTreatments">
-    <div *ngIf="hairdresserFromDataService != null && hairdresserFromDataService.id == hairdresser.id else noSelectedTreatments">
-        true
-    </div>    
+    <div
+        *ngIf="hairdresserFromDataService != null && hairdresserFromDataService.id == hairdresser.id else noSelectedTreatments">
+        <div class="container">
+            <div class="center">
+                <mdb-card class="text-center">
+                    <mdb-card-header>Datum en uur kiezen</mdb-card-header>
+                    <mdb-card-body>
+                        <mdb-card-text>
+                            <div class="row">
+                                <div class="col-6">
+                                    <mdb-card-title>
+                                        <h5>Datum en uur</h5>
+                                    </mdb-card-title>
+                                    <form [formGroup]="datePick" (ngSubmit)="dateSubmit()">
+                                        <mat-form-field>
+                                            <mat-label>Kies een datum</mat-label>
+                                            <input matInput [matDatepicker]="picker" formControlName="date" required>
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+                                        </mat-form-field>
+                                        <button mdbBtn color="primary" type="submit" [disabled]="!datePick.valid">
+                                            Kies</button>
+                                    </form>
+                                </div>
+                                <div class="col-6">
+                                    <mdb-card-title>
+                                        <h5>Gekozen behandelingen</h5>
+                                    </mdb-card-title>
+                                </div>
+                            </div>
+                        </mdb-card-text>
+                        <a href="" mdbBtn color="primary">Go somewhere!</a>
+                    </mdb-card-body>
+                </mdb-card>
+            </div>
+        </div>
+    </div>
 </div>
 <ng-template #noSelectedTreatments>
     <div class="alert alert-danger" role="alert">

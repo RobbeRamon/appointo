@@ -9,8 +9,8 @@ import { HairdresserModule } from "./hairdresser/hairdresser.module";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
 import { HairdresserDetailModule } from "./hairdresser-detail/hairdresser-detail.module";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CreateAppointmentModule } from './create-appointment/create-appointment.module';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { CreateAppointmentModule } from "./create-appointment/create-appointment.module";
 
 // const appRoutes: Routes = [
 //   { path: "hairdresser/list", component: HairdresserListComponent },
@@ -28,9 +28,9 @@ import { CreateAppointmentModule } from './create-appointment/create-appointment
     AppRoutingModule,
     HairdresserDetailModule,
     BrowserAnimationsModule,
-    CreateAppointmentModule
+    CreateAppointmentModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

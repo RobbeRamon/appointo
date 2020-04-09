@@ -35,6 +35,12 @@ export class Treatment {
     this._amount = amount;
   }
 
+  toJSON(): TreatmentJson {
+    return <TreatmentJson>{
+      id: this.id,
+    };
+  }
+
   static fromJSON(json: TreatmentJson): Treatment {
     const treatment = new Treatment(json.id, json.name, json.duration);
 
