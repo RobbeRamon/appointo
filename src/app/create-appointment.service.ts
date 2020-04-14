@@ -9,12 +9,24 @@ import { Treatment } from "./treatment.model";
   providedIn: "root",
 })
 export class CreateAppointmentService {
-  private _hours: Date[] = [];
+  private _hours: Date[];
+  private _hours$ = new BehaviorSubject<Date[]>([]);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    // this._hours$
+    //   .pipe(catchError(this.handleError))
+    //   .subscribe((hours: Date[]) => {
+    //     this._hours = hours;
+    //     //this._hours$.next(this._hours);
+    //   });
+  }
 
   get hours() {
     return this._hours;
+  }
+
+  get allAvailableHours() {
+    return this._hours$;
   }
 
   getAvailableHours$(id: number, date: Date, treatments: Treatment[]): void {
@@ -34,7 +46,34 @@ export class CreateAppointmentService {
         }
 
         this._hours = data2;
+        this._hours$.next(this._hours);
       });
+  }
+
+  getAvailableHours2$(
+    id: number,
+    date: Date,
+    treatments: Treatment[]
+  ): Observable<Date[]> {
+    return this.http
+      .post(
+        `${
+          environment.apiUrl
+        }/hairdressers/${id}/availabletimes?date=${date.toJSON()}`,
+        treatments.map((tr) => tr.toJSON())
+      )
+      .pipe(
+        catchError(this.handleError),
+        map((data: string[]) => {
+          let data2: Date[] = [];
+          for (let date of data) {
+            date = `"${date}"`;
+            data2.push(JSON.parse(date));
+          }
+
+          return data2;
+        })
+      );
   }
 
   handleError(err: any): Observable<never> {

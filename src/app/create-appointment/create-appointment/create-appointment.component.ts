@@ -9,6 +9,8 @@ import {
   Validators,
 } from "@angular/forms";
 import { CreateAppointmentService } from "src/app/create-appointment.service";
+import { Observable } from "rxjs";
+import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-create-appointment",
@@ -18,6 +20,7 @@ import { CreateAppointmentService } from "src/app/create-appointment.service";
 export class CreateAppointmentComponent implements OnInit {
   public hairdresser: Hairdresser;
   public datePick: FormGroup;
+  public _fetchHours$: Observable<Date[]>;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +37,12 @@ export class CreateAppointmentComponent implements OnInit {
     this.datePick = this.fb.group({
       date: [Validators.required],
     });
+
+    this._fetchHours$ = this._appointmentDataService.allAvailableHours;
+  }
+
+  get hours$(): Observable<Date[]> {
+    return this._fetchHours$;
   }
 
   get treatments() {

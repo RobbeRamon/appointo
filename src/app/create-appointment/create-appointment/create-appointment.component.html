@@ -22,6 +22,11 @@
                                         <button mdbBtn color="primary" type="submit" [disabled]="!datePick.valid">
                                             Kies</button>
                                     </form>
+                                    <div *ngIf="hours$ | async as hours">
+                                        <div *ngFor="let hour of hours">
+                                            {{hour}}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-6">
                                     <mdb-card-title>
