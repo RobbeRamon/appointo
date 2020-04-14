@@ -23,19 +23,31 @@
                                             Kies</button>
                                     </form>
                                     <div *ngIf="hours$ | async as hours">
-                                        <div *ngFor="let hour of hours">
-                                            {{hour}}
+                                        <div *ngIf="hours.length > 0">
+                                            <select>
+                                                <option *ngFor="let hour of hours">{{hour.toString().substring(11,16)}}
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <mdb-card-title>
-                                        <h5>Gekozen behandelingen</h5>
-                                    </mdb-card-title>
+                                    <div class="list-group">
+
+                                        <div class="list-group-item active waves-light" mdbWavesEffect>
+                                            Gekozen behandelingen
+                                        </div>
+                                        <div *ngFor="let treatment of treatments" class="list-group-item waves-light">
+                                            {{treatment.name}}
+                                            <div *ngIf="treatment.amount > 1" class="d-inline-block amount">
+                                                x{{treatment.amount}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </mdb-card-text>
-                        <a href="" mdbBtn color="primary">Go somewhere!</a>
+                        <a href="" mdbBtn color="primary">Bevestig afspraak</a>
                     </mdb-card-body>
                 </mdb-card>
             </div>
