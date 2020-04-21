@@ -1,3 +1,26 @@
 .center {
   margin-top: 20%;
 }
+
+.hourblock {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: calc(100% / 1.7);
+  margin-left: 20%;
+}
+
+.hour {
+  border-radius: 2px;
+  padding: 10px;
+  background-color: white;
+  border: none;
+}
+
+.hour:hover,
+#selected {
+  background-color: dodgerblue;
+  color: white;
+  border: none;
+}

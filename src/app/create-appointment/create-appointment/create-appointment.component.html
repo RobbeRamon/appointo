@@ -24,10 +24,36 @@
                                     </form>
                                     <div *ngIf="hours$ | async as hours">
                                         <div *ngIf="hours.length > 0">
-                                            <select>
-                                                <option *ngFor="let hour of hours">{{hour.toString().substring(11,16)}}
-                                                </option>
-                                            </select>
+                                            <div class="time-picker">
+                                                <mat-tab-group mat-align-tabs="center">
+                                                    <mat-tab label="Voormiddag">
+                                                        <mdb-card>
+                                                            <mdb-card-body class="hourblock">
+                                                                <div *ngFor="let hour of hours">
+                                                                    <button
+                                                                        *ngIf="hour.toString().substring(11,13) < 12"
+                                                                        class="hour" (click)="pickHour(hour, $event)">
+                                                                        {{hour.toString().substring(11,16)}}
+                                                                    </button>
+                                                                </div>
+                                                            </mdb-card-body>
+                                                        </mdb-card>
+                                                    </mat-tab>
+                                                    <mat-tab label="Namiddag">
+                                                        <mdb-card>
+                                                            <mdb-card-body class="hourblock">
+                                                                <div *ngFor="let hour of hours">
+                                                                    <button
+                                                                        *ngIf="hour.toString().substring(11,13) >= 12"
+                                                                        class="hour" (click)="pickHour(hour, $event)">
+                                                                        {{hour.toString().substring(11,16)}}
+                                                                    </button>
+                                                                </div>
+                                                            </mdb-card-body>
+                                                        </mdb-card>
+                                                    </mat-tab>
+                                                </mat-tab-group>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -47,7 +73,7 @@
                                 </div>
                             </div>
                         </mdb-card-text>
-                        <a href="" mdbBtn color="primary">Bevestig afspraak</a>
+                        <button mdbBtn color="primary" (click)="submitAppointment()">Bevestig afspraak</button>
                     </mdb-card-body>
                 </mdb-card>
             </div>

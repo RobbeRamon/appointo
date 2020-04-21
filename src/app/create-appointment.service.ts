@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { catchError, map } from "rxjs/operators";
+import { catchError, map, tap } from "rxjs/operators";
 import { Observable, throwError, BehaviorSubject } from "rxjs";
 import { environment } from "src/environments/environment";
 import { Treatment } from "./treatment.model";
+import { Hairdresser } from "./hairdresser.model";
 
 @Injectable({
   providedIn: "root",
@@ -11,6 +12,7 @@ import { Treatment } from "./treatment.model";
 export class CreateAppointmentService {
   private _hours: Date[];
   private _hours$ = new BehaviorSubject<Date[]>([]);
+  private _selectedHour: Date;
 
   constructor(private http: HttpClient) {
     // this._hours$
@@ -27,6 +29,10 @@ export class CreateAppointmentService {
 
   get allAvailableHours() {
     return this._hours$;
+  }
+
+  set selectedHour(hour: Date) {
+    this._selectedHour = hour;
   }
 
   getAvailableHours$(id: number, date: Date, treatments: Treatment[]): void {
@@ -87,5 +93,24 @@ export class CreateAppointmentService {
       errorMessage = err;
     }
     return throwError(errorMessage);
+  }
+
+  bookAppointment(id: number, treatments: Treatment[]) {
+    this.http
+      .post(`${environment.apiUrl}/hairdressers/${id}/appointments`, {
+        startMoment: this._selectedHour,
+        treatments: treatments.map((tr) => tr.toJSON()),
+      })
+      .pipe(tap(console.log), catchError(this.handleError))
+      .pipe(
+        // temporary fix, while we use the behaviorsubject as a cache stream
+        catchError((err) => {
+          return throwError(err);
+        })
+      )
+      .subscribe((appoinment) => {
+        // this._recipes = [...this._recipes, rec];
+        // this._recipes$.next(this._recipes);
+      });
   }
 }

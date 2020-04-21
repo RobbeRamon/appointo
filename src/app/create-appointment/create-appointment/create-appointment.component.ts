@@ -53,12 +53,46 @@ export class CreateAppointmentComponent implements OnInit {
     return this._bookedTreatmentDataService.hairdresser;
   }
 
+  get today() {
+    let today = new Date();
+    let date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
+    console.log(date);
+
+    return date;
+  }
+
   dateSubmit() {
     let date = this.datePick.value.date;
     this._appointmentDataService.getAvailableHours$(
       this.hairdresser.id,
       date,
       this._bookedTreatmentDataService.bookedTreatments
+    );
+  }
+
+  pickHour(hour: Date, $event) {
+    let lastTarget = document.getElementById("selected");
+
+    if (lastTarget) {
+      lastTarget.removeAttribute("id");
+    }
+
+    let target = $event.target || $event.srcElement || $event.currentTarget;
+    target.id = "selected";
+
+    this._appointmentDataService.selectedHour = hour;
+  }
+
+  submitAppointment() {
+    this._appointmentDataService.bookAppointment(
+      this.hairdresser.id,
+      this.treatments
     );
   }
 }
