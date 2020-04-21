@@ -11,8 +11,9 @@ import { Hairdresser } from "src/app/hairdresser.model";
 export class TreatmentAddedComponent implements OnInit {
   @Input() public hairdresser: Hairdresser;
 
-  constructor(private _bookedTreatmentDataService: BookedTreatmentDataService) {
-  }
+  constructor(
+    private _bookedTreatmentDataService: BookedTreatmentDataService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -20,21 +21,30 @@ export class TreatmentAddedComponent implements OnInit {
     return this._bookedTreatmentDataService.bookedTreatments;
   }
 
-  totalPrice(): number {
-    return 15;
+  get totalPrice(): number {
+    let totalPrice: number = 0;
+
+    for (let treatment of this.treatments) {
+      totalPrice += treatment.price * treatment.amount;
+    }
+    return totalPrice;
   }
 
   receiveAddedTreatment($event) {
-    if(this._bookedTreatmentDataService.hairdresser != null) {
-      if(this._bookedTreatmentDataService.hairdresser.id == this.hairdresser.id) {
-        let treatment: Treatment = this._bookedTreatmentDataService.bookedTreatments.filter(tr => tr.id == $event.id)[0];
+    if (this._bookedTreatmentDataService.hairdresser != null) {
+      if (
+        this._bookedTreatmentDataService.hairdresser.id == this.hairdresser.id
+      ) {
+        let treatment: Treatment = this._bookedTreatmentDataService.bookedTreatments.filter(
+          (tr) => tr.id == $event.id
+        )[0];
 
-        if (treatment){
+        if (treatment) {
           treatment.amount++;
         } else {
           $event.amount = 1;
           this._bookedTreatmentDataService.bookTreatment($event);
-        } 
+        }
       } else {
         this._bookedTreatmentDataService.resetTreatments();
         this._bookedTreatmentDataService.hairdresser = this.hairdresser;
@@ -46,6 +56,13 @@ export class TreatmentAddedComponent implements OnInit {
       $event.amount = 1;
       this._bookedTreatmentDataService.bookTreatment($event);
     }
- 
+  }
+
+  removeTreatment(treatment: Treatment) {
+    if (treatment.amount < 2) {
+      this._bookedTreatmentDataService.removeTreatment(treatment);
+    } else {
+      treatment.amount--;
+    }
   }
 }

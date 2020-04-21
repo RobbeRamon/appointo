@@ -1,16 +1,38 @@
 <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Vrouwen">
         <div *ngFor="let treatment of hairdresser.treatments">
-            <mdb-card>
+            <mdb-card *ngIf="treatment.category == 1">
                 <mdb-card-body>
                     {{ treatment.name }}
-                    <span class="pl-20">€15</span>
+                    <span class="pl-20">€{{treatment.price}}</span>
                     <button mdbBtn color="primary" class="add float-right"
                         (click)="bookTreatment(treatment)">Toevoegen</button>
                 </mdb-card-body>
             </mdb-card>
         </div>
     </mat-tab>
-    <mat-tab label="Mannen">Content 2</mat-tab>
-    <mat-tab label="Kinderen">Content 3</mat-tab>
+    <mat-tab label="Mannen">
+        <div *ngFor="let treatment of hairdresser.treatments">
+            <mdb-card *ngIf="treatment.category == 0">
+                <mdb-card-body>
+                    {{ treatment.name }}
+                    <span class="pl-20">€{{treatment.price}}</span>
+                    <button mdbBtn color="primary" class="add float-right"
+                        (click)="bookTreatment(treatment)">Toevoegen</button>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Kinderen">
+        <div *ngFor="let treatment of hairdresser.treatments">
+            <mdb-card *ngIf="treatment.category == 2">
+                <mdb-card-body>
+                    {{ treatment.name }}
+                    <span class="pl-20">€{{treatment.price}}</span>
+                    <button mdbBtn color="primary" class="add float-right"
+                        (click)="bookTreatment(treatment)">Toevoegen</button>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
+    </mat-tab>
 </mat-tab-group>

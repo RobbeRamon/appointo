@@ -2,16 +2,35 @@ export interface TreatmentJson {
   id: number;
   name: string;
   duration: string;
+  category: number;
+  price: number;
+}
+
+export enum Category {
+  MEN = "Mannen",
+  WOMEN = "Vrouwen",
+  CHILDREN = "Kinderen",
 }
 
 export class Treatment {
   private _amount: number;
+  private _categoryString: string;
 
   constructor(
     private _id: number,
     private _name: string,
-    private _duration: string
+    private _duration: string,
+    private _category: number,
+    private _price: number
   ) {
+    if (_category === 0) {
+      this._categoryString = Category.MEN;
+    } else if (_category === 1) {
+      this._categoryString = Category.WOMEN;
+    } else {
+      this._categoryString = Category.CHILDREN;
+    }
+
     this._amount = 0;
   }
 
@@ -35,6 +54,22 @@ export class Treatment {
     this._amount = amount;
   }
 
+  get category() {
+    return this._category;
+  }
+
+  get categoryString() {
+    return this._categoryString;
+  }
+
+  get price() {
+    return this._price;
+  }
+
+  set price(price) {
+    this._price = price;
+  }
+
   toJSON(): TreatmentJson {
     return <TreatmentJson>{
       id: this.id,
@@ -42,7 +77,13 @@ export class Treatment {
   }
 
   static fromJSON(json: TreatmentJson): Treatment {
-    const treatment = new Treatment(json.id, json.name, json.duration);
+    const treatment = new Treatment(
+      json.id,
+      json.name,
+      json.duration,
+      json.category,
+      json.price
+    );
 
     return treatment;
   }

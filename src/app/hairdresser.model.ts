@@ -29,7 +29,7 @@ export class Hairdresser {
     hairdresser._id = json.id;
     hairdresser._treatments = json.treatments.map(
       (tr: TreatmentJson): Treatment =>
-        new Treatment(tr.id, tr.name, tr.duration)
+        new Treatment(tr.id, tr.name, tr.duration, tr.category, tr.price)
     );
     return hairdresser;
   }

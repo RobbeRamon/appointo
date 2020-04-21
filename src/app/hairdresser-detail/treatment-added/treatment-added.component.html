@@ -10,16 +10,26 @@
                 </div>
                 <div *ngIf="treatments.length > 0; else noTreatments">
                     <div *ngFor="let treatment of treatments" class="list-group-item waves-light">
-                        {{treatment.name}}
-                        <div *ngIf="treatment.amount > 1" class="d-inline-block amount">
+                        {{treatment.name}},
+                        {{treatment.categoryString}}
+                        <div *ngIf="treatment.amount > 1 else noAmount" class="d-inline-block amount">
+                            <button type="button" class="removeTreatment"
+                                (click)="removeTreatment(treatment)">-</button>
                             x{{treatment.amount}}
-                        </div>                        
+                        </div>
+                        <ng-template #noAmount>
+                            <div class="d-inline-block amount">
+                                <button type="button" class="removeTreatment"
+                                    (click)="removeTreatment(treatment)">-</button>
+                            </div>
+                        </ng-template>
                     </div>
                     <div class="list-group-item">
-                        Totaalprijs: €{{this.totalPrice()}}
+                        Totaalprijs: €{{this.totalPrice}}
                     </div>
                     <div>
-                        <a mdbBtn color="primary" class="add float-right" [routerLink]="['/kapper/afspraak/maak/', this.hairdresser.id]">Bevestigen</a>
+                        <a mdbBtn color="primary" class="add float-right"
+                            [routerLink]="['/kapper/afspraak/maak/', this.hairdresser.id]">Bevestigen</a>
                     </div>
                 </div>
                 <ng-template #noTreatments>

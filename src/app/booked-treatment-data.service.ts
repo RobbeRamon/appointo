@@ -29,6 +29,14 @@ export class BookedTreatmentDataService {
     this._bookedTreatments = [...this._bookedTreatments, treatment];
   }
 
+  removeTreatment(treatment: Treatment) {
+    for (let i = 0; i < this._bookedTreatments.length; i++) {
+      if (this._bookedTreatments[i] == treatment) {
+        this._bookedTreatments.splice(i, 1);
+      }
+    }
+  }
+
   resetTreatments() {
     this._bookedTreatments = [];
   }
