@@ -1,1 +1,31 @@
-<p>register works!</p>
+<div class="container">
+    <form class="text-center border border-light p-5 register" [formGroup]="register" (ngSubmit)="onSubmit()">
+
+        <p class="h4 mb-4">Registreer je als kapper</p>
+
+        <!-- E-mail -->
+        <input type="text" id="name" class="form-control mb-4" placeholder="Naam van de zaak" formControlName="name">
+
+        <!-- Name -->
+        <input type="email" id="email" class="form-control mb-4" placeholder="E-mail" formControlName="email">
+
+        <!-- Password -->
+        <input type="password" id="password" class="form-control" placeholder="Password" formControlName="password">
+        <small id="passwordHelpBlock" class="form-text text-muted mb-4">
+            Minstens 8 karakters, 1 cijfer en 1 speciaal teken
+        </small>
+
+        <!-- Sign up button -->
+        <button mdbBtn color="primary" block="true" class="my-4" type="submit">Registreer</button>
+
+        <hr>
+
+        <!-- Terms of service -->
+        <p>Door te klikken op
+            <em>Registreer</em> ga je akkoord met onze
+            <a href="https://www.websitepolicies.com/policies/view/Irp9k7oL" target="_blank">terms of service</a></p>
+    </form>
+    <div class="alert alert-danger error" role="alert" *ngIf="errorMessage">
+        Er is een error opgetreden: {{ errorMessage }}
+    </div>
+</div>

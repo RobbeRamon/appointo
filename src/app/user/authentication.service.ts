@@ -1,9 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthenticationService {
+  constructor() {}
 
-  constructor() { }
+  login(email: string, password: string): Observable<boolean> {
+    return null;
+  }
+
+  register(name: string, email: string, password: string): Observable<boolean> {
+    return null;
+  }
+
+  logout() {}
+
+  checkUsernameAvailability() {
+    return null;
+  }
 }
