@@ -1,6 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { MainNavComponent } from "./main-nav/main-nav.component";
@@ -11,12 +10,7 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { HairdresserDetailModule } from "./hairdresser-detail/hairdresser-detail.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CreateAppointmentModule } from "./create-appointment/create-appointment.module";
-
-// const appRoutes: Routes = [
-//   { path: "hairdresser/list", component: HairdresserListComponent },
-//   { path: "", redirectTo: "hairdresser/list", pathMatch: "full" },
-//   { path: "**", component: PageNotFoundComponent }
-// ];
+import { UserModule } from "./user/user.module";
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, PageNotFoundComponent],
@@ -24,11 +18,11 @@ import { CreateAppointmentModule } from "./create-appointment/create-appointment
     BrowserModule,
     MdbootstrapModule,
     HairdresserModule,
-    //RouterModule.forRoot(appRoutes),
-    AppRoutingModule,
-    HairdresserDetailModule,
+    //HairdresserDetailModule,
     BrowserAnimationsModule,
     CreateAppointmentModule,
+    UserModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

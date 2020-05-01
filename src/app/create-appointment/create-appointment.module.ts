@@ -5,6 +5,16 @@ import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 import { MaterialModule } from "../material/material.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { AvailableHoursComponent } from "./available-hours/available-hours.component";
+import { Routes, RouterModule } from "@angular/router";
+import { HairdresserResolver } from "../hairdresser-detail/HairdresserResolver";
+
+const routes: Routes = [
+  {
+    path: "hairdresser/appointment/create/:id",
+    component: CreateAppointmentComponent,
+    resolve: { hairdresser: HairdresserResolver },
+  },
+];
 
 @NgModule({
   declarations: [CreateAppointmentComponent, AvailableHoursComponent],
@@ -13,6 +23,7 @@ import { AvailableHoursComponent } from "./available-hours/available-hours.compo
     MdbootstrapModule,
     MaterialModule,
     ReactiveFormsModule,
+    RouterModule.forChild(routes),
   ],
 })
 export class CreateAppointmentModule {}
