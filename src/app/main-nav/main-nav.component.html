@@ -21,7 +21,8 @@
             <!-- Dropdown -->
             <li class="nav-item dropdown" dropdown>
                 <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
-                    mdbWavesEffect>Basic dropdown<span class="caret"></span></a>
+                    mdbWavesEffect>Basic
+                    dropdown<span class="caret"></span></a>
                 <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
                     <a class="dropdown-item waves-light" mdbWavesEffect href="#">Action</a>
                     <a class="dropdown-item waves-light" mdbWavesEffect href="#">Another action</a>
@@ -32,19 +33,28 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">
-            <li class="nav-item">
-                <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
-            </li>
-            <li class="nav-item dropdown" dropdown>
-                <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
-                    mdbWavesEffect>
-                    <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span>
-                </a>
-                <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
-                </div>
-            </li>
+            <div *ngIf="loggedInUser$ | async as user">
+                <li class="nav-item">
+                    <a class="nav-link">1 <mdb-icon fas icon="envelope"></mdb-icon></a>
+                </li>
+            </div>
+            <div *ngIf="loggedInUser$ | async as user; else loginTemplate">
+                <li class="nav-item dropdown" dropdown>
+                    <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light"
+                        mdbWavesEffect>
+                        <mdb-icon fas icon="user"></mdb-icon>{{ user }}<span class="caret"></span>
+                    </a>
+                    <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#">Beheer</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Uitloggen</a>
+                    </div>
+                </li>
+            </div>
+            <ng-template #loginTemplate>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect (click)="login()">Inloggen</a>
+                </li>
+            </ng-template>
         </ul>
         <!-- Links -->
     </links>
