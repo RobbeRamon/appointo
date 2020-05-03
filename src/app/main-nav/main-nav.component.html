@@ -52,6 +52,9 @@
             </div>
             <ng-template #loginTemplate>
                 <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect [routerLink]="['/register']">Registeren</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link waves-light" mdbWavesEffect (click)="login()">Inloggen</a>
                 </li>
             </ng-template>
