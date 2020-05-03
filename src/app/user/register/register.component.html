@@ -5,15 +5,45 @@
 
         <!-- E-mail -->
         <input type="text" id="name" class="form-control mb-4" placeholder="Naam van de zaak" formControlName="name">
+        <div class="alert alert-danger error" role="alert"
+            *ngIf="register.get('name').errors && register.get('name').touched">
+            {{ getErrorMessage(register.get('name').errors)}}
+        </div>
 
         <!-- Name -->
         <input type="email" id="email" class="form-control mb-4" placeholder="E-mail" formControlName="email">
+        <div class="alert alert-danger error" role="alert"
+            *ngIf="register.get('email').errors && register.get('email').touched">
+            {{ getErrorMessage(register.get('email').errors)}}
+        </div>
 
         <!-- Password -->
-        <input type="password" id="password" class="form-control" placeholder="Password" formControlName="password">
+        <div class="row" formGroupName="passwordGroup">
+            <div class="col-sm-12 col-md-6 ">
+                <input type="password" id="password" class="form-control" placeholder="Wachtwoord"
+                    formControlName="password">
+                <div class="alert alert-danger error" role="alert"
+                    *ngIf="register.get('passwordGroup').get('password').errors && register.get('passwordGroup').get('password').touched">
+                    {{ getErrorMessage(register.get('passwordGroup').get('password').errors)}}
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 ">
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Wachtwoord bevestigen"
+                    formControlName="confirmPassword">
+                <div class="alert alert-danger error" role="alert"
+                    *ngIf="register.get('passwordGroup').get('confirmPassword').errors && register.get('passwordGroup').get('confirmPassword').touched">
+                    {{ getErrorMessage(register.get('passwordGroup').get('confirmPassword').errors)}}
+                </div>
+            </div>
+        </div>
         <small id="passwordHelpBlock" class="form-text text-muted mb-4">
-            Minstens 8 karakters, 1 cijfer en 1 speciaal teken
+            Minstens 8 karakters, 1 cijfer, 1 hoofdletter, 1 kleine letter en 1 speciaal teken
         </small>
+        <div class="alert alert-danger error" role="alert"
+            *ngIf="register.get('passwordGroup').errors && register.get('passwordGroup').get('confirmPassword').touched && register.get('passwordGroup').get('password').errors">
+            {{ getErrorMessage(register.get('passwordGroup').errors)}}
+        </div>
+
 
         <!-- Sign up button -->
         <button mdbBtn color="primary" block="true" class="my-4" type="submit">Registreer</button>
@@ -23,7 +53,8 @@
         <!-- Terms of service -->
         <p>Door te klikken op
             <em>Registreer</em> ga je akkoord met onze
-            <a href="https://www.websitepolicies.com/policies/view/Irp9k7oL" target="_blank">terms of service</a></p>
+            <a href="https://www.websitepolicies.com/policies/view/Irp9k7oL" target="_blank">terms of service</a>
+        </p>
     </form>
     <div class="alert alert-danger error" role="alert" *ngIf="errorMessage">
         Er is een error opgetreden: {{ errorMessage }}

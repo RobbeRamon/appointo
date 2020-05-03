@@ -28,20 +28,21 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authSerivce
-      .login(this.login.value.name, this.login.value.password)
+      .login(this.login.value.email, this.login.value.password)
       .subscribe(
         (val) => {
           if (val) {
             // TODO: navigate to admin panel using this.router.navigate(["/admin"])
+            this.router.navigate([""]);
           } else {
-            this.errorMessage = "Kon niet inloggen";
+            this.errorMessage = "Could not login";
           }
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
-            this.errorMessage = `Error bij het inloggen van gebruiker ${this.login.value.email}: ${err.error.message}`;
+            this.errorMessage = `Error while trying to login user ${this.login.value.email}: ${err.error.message}`;
           } else {
-            this.errorMessage = `Erro ${err.status} bij het inloggen van gebruiker ${this.login.value.email}: ${err.error.message}`;
+            this.errorMessage = `Error ${err.status} while trying to login user ${this.login.value.email}: ${err.message}`;
           }
         }
       );
