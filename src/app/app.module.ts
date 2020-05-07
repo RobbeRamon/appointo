@@ -12,7 +12,7 @@ import { CreateAppointmentModule } from "./create-appointment/create-appointment
 import { UserModule } from "./user/user.module";
 import { httpInterceptorProviders } from "./interceptor/providers";
 import { HairdresserSettingsModule } from "./hairdresser-settings/hairdresser-settings.module";
-import { CalendarModule } from './calendar/calendar.module';
+import { CalendarModule } from "./calendar/calendar.module";
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, PageNotFoundComponent],
@@ -24,8 +24,8 @@ import { CalendarModule } from './calendar/calendar.module';
     CreateAppointmentModule,
     UserModule,
     HairdresserSettingsModule,
-    AppRoutingModule,
     CalendarModule,
+    AppRoutingModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
