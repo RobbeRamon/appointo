@@ -11,6 +11,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CreateAppointmentModule } from "./create-appointment/create-appointment.module";
 import { UserModule } from "./user/user.module";
 import { httpInterceptorProviders } from "./interceptor/providers";
+import { HairdresserSettingsModule } from "./hairdresser-settings/hairdresser-settings.module";
+import { CalendarModule } from './calendar/calendar.module';
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, PageNotFoundComponent],
@@ -18,11 +20,12 @@ import { httpInterceptorProviders } from "./interceptor/providers";
     BrowserModule,
     MdbootstrapModule,
     HairdresserModule,
-    //HairdresserDetailModule,
     BrowserAnimationsModule,
     CreateAppointmentModule,
     UserModule,
+    HairdresserSettingsModule,
     AppRoutingModule,
+    CalendarModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
