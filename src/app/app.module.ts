@@ -7,10 +7,10 @@ import { MdbootstrapModule } from "./mdbootstrap/mdbootstrap.module";
 import { HairdresserModule } from "./hairdresser/hairdresser.module";
 import { AppRoutingModule } from "./app-routing/app-routing.module";
 import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
-import { HairdresserDetailModule } from "./hairdresser-detail/hairdresser-detail.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CreateAppointmentModule } from "./create-appointment/create-appointment.module";
 import { UserModule } from "./user/user.module";
+import { httpInterceptorProviders } from "./interceptor/providers";
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, PageNotFoundComponent],
@@ -24,7 +24,7 @@ import { UserModule } from "./user/user.module";
     UserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
