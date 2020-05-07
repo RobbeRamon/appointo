@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import nlLocale from "@fullcalendar/core/locales/nl";
+import { AppointmentDataService } from "../appointment-data.service";
+import { Appointment } from "src/app/appointment.model";
 
 @Component({
   selector: "app-calendar",
@@ -9,10 +11,29 @@ import nlLocale from "@fullcalendar/core/locales/nl";
   styleUrls: ["./calendar.component.scss"],
 })
 export class CalendarComponent implements OnInit {
-  calendarPlugins = [dayGridPlugin, timeGridPlugin];
-  locales = [nlLocale];
+  public calendarPlugins = [dayGridPlugin, timeGridPlugin];
+  public locales = [nlLocale];
+  public calendarEvents = [];
 
-  constructor() {}
+  constructor(private _appointmentData: AppointmentDataService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.addEvent("event 2", "2020-05-07");
+    this.fillCalendar();
+  }
+
+  addEvent(title: string, date: string) {
+    this.calendarEvents = this.calendarEvents.concat({
+      title: title,
+      date: date,
+    });
+  }
+
+  fillCalendar() {
+    this._appointmentData.allAppointemnts$.subscribe((apps: Appointment[]) => {
+      apps.forEach((app) => {
+        this.addEvent(app.startMoment.toString(), app.startMoment.toString());
+      });
+    });
+  }
 }

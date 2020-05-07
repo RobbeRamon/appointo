@@ -1,7 +1,7 @@
-<div class="container pt-5">
-    <full-calendar [plugins]="calendarPlugins" defaultView="dayGridMonth" [header]="{
+<div class="container pt-5 pb-5">
+    <full-calendar [plugins]="calendarPlugins" defaultView="timeGridDay" [header]="{
                 left: 'prev,next today',
                 center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-            }" [locales]="locales" locale="nl"></full-calendar>
+                right: 'timeGridDay,timeGridWeek,dayGridMonth'
+            }" [locales]="locales" locale="nl" [events]="calendarEvents" [allDaySlot]="false"></full-calendar>
 </div>
