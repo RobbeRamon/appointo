@@ -20,6 +20,8 @@ export class CalendarComponent implements OnInit {
   ngOnInit(): void {
     this.addEvent("event 2", "2020-05-07");
     this.fillCalendar();
+    this._appointmentData.startConnection();
+    this._appointmentData.addAppointmentsListener();
   }
 
   addEvent(title: string, date: string) {
@@ -31,6 +33,7 @@ export class CalendarComponent implements OnInit {
 
   fillCalendar() {
     this._appointmentData.allAppointemnts$.subscribe((apps: Appointment[]) => {
+      this.calendarEvents = [];
       apps.forEach((app) => {
         this.addEvent(app.startMoment.toString(), app.startMoment.toString());
       });
