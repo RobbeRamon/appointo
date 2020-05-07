@@ -10,6 +10,7 @@ import { map } from "rxjs/operators";
 export class AuthenticationService {
   private readonly _tokenKey = "currentUser";
   private _user$: BehaviorSubject<string>;
+  public redirectUrl: string = "";
 
   constructor(private http: HttpClient) {
     let parsedToken = parseJwt(this.tokenStorage);

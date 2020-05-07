@@ -32,8 +32,13 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (val) => {
           if (val) {
-            // TODO: navigate to admin panel using this.router.navigate(["/admin"])
-            this.router.navigate([""]);
+            if (this.authSerivce.redirectUrl) {
+              this.router.navigateByUrl(this.authSerivce.redirectUrl);
+              this.authSerivce.redirectUrl = "";
+            } else {
+              // TODO: navigate to admin panel using this.router.navigate(["/admin"])
+              this.router.navigate([""]);
+            }
           } else {
             this.errorMessage = "Could not login";
           }
