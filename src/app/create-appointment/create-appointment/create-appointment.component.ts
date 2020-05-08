@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BookedTreatmentDataService } from "src/app/booked-treatment-data.service";
 import { Hairdresser } from "src/app/hairdresser.model";
 import {
@@ -26,7 +26,8 @@ export class CreateAppointmentComponent implements OnInit {
     private route: ActivatedRoute,
     private _bookedTreatmentDataService: BookedTreatmentDataService,
     private fb: FormBuilder,
-    private _appointmentDataService: CreateAppointmentService
+    private _appointmentDataService: CreateAppointmentService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -94,5 +95,6 @@ export class CreateAppointmentComponent implements OnInit {
       this.hairdresser.id,
       this.treatments
     );
+    this.router.navigate([""]);
   }
 }

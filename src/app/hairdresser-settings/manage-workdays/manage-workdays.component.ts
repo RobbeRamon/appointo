@@ -78,4 +78,6 @@ export class ManageWorkdaysComponent implements OnInit {
   removeWorkBlock(day: number, block: number) {
     this.getHours(day).removeAt(block);
   }
+
+  onSubmit() {}
 }
