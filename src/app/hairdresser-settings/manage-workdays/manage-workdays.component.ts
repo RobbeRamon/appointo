@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, FormArray } from "@angular/forms";
+import { HairdresserSettingsDataService } from "../hairdresser-settings-data.service";
+import { Observable, EMPTY } from "rxjs";
+import { Workday } from "src/app/workday.model";
+import { catchError } from "rxjs/operators";
+import { TimeRange } from "src/app/timerange.model";
 
 function validateTimeBlock(control: FormGroup): { [key: string]: any } {
   if (
@@ -36,8 +41,13 @@ export class ManageWorkdaysComponent implements OnInit {
     "saturday",
     "sunday",
   ];
+  private _fetchWorkdays$: Observable<Workday[]>;
+  public errorMessage: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private _hairdresserSettingsData: HairdresserSettingsDataService
+  ) {}
 
   ngOnInit(): void {
     this.days = this.fb.group({
@@ -55,6 +65,25 @@ export class ManageWorkdaysComponent implements OnInit {
     //     this.getHours(0).push(this.createTimeBlock());
     //   }
     // });
+
+    this._fetchWorkdays$ = this._hairdresserSettingsData.allCurrentOpeningHours$.pipe(
+      catchError((err) => {
+        this.errorMessage = err;
+        return EMPTY;
+      })
+    );
+
+    this.workDays$.subscribe((workdays) => {
+      for (let workday of workdays) {
+        for (let timeBlock of workday.hours) {
+          this.addWorkBlockWithTime(workday.dayId, timeBlock);
+        }
+      }
+    });
+  }
+
+  get workDays$() {
+    return this._fetchWorkdays$;
   }
 
   getHours(day: number): FormArray {
@@ -71,8 +100,22 @@ export class ManageWorkdaysComponent implements OnInit {
     );
   }
 
+  createTimeBlockWithTime(hour: TimeRange): FormGroup {
+    return this.fb.group(
+      {
+        start: [`${hour.startTime.hours}:${hour.startTime.minutes}`],
+        end: [`${hour.endTime.hours}:${hour.endTime.minutes}`],
+      },
+      { validator: validateTimeBlock }
+    );
+  }
+
   addWorkBlock(day: number) {
     this.getHours(day).push(this.createTimeBlock());
+  }
+
+  addWorkBlockWithTime(day: number, hour: TimeRange) {
+    this.getHours(day).push(this.createTimeBlockWithTime(hour));
   }
 
   removeWorkBlock(day: number, block: number) {
