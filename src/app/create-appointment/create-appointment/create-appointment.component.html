@@ -31,7 +31,7 @@
                                                             <mdb-card-body class="hourblock">
                                                                 <div *ngFor="let hour of hours">
                                                                     <button
-                                                                        *ngIf="hour.toString().substring(11,13) < 12"
+                                                                        *ngIf="hour.toString().substring(11,13) < '12'"
                                                                         class="hour" (click)="pickHour(hour, $event)">
                                                                         {{hour.toString().substring(11,16)}}
                                                                     </button>
@@ -44,7 +44,7 @@
                                                             <mdb-card-body class="hourblock">
                                                                 <div *ngFor="let hour of hours">
                                                                     <button
-                                                                        *ngIf="hour.toString().substring(11,13) >= 12"
+                                                                        *ngIf="hour.toString().substring(11,13) >= '12'"
                                                                         class="hour" (click)="pickHour(hour, $event)">
                                                                         {{hour.toString().substring(11,16)}}
                                                                     </button>

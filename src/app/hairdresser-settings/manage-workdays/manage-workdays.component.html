@@ -1,87 +1,33 @@
 <div class="container">
-    <form action="">
-        <div class="row">
-            <div class="col-12">
-                <h3>Maandag</h3>
-            </div>
-            <div class="md-form input-group col-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text md-addon">Van en Tot</span>
+    <form [formGroup]="days" class="justify-content-md-center">
+        <div *ngFor="let dayString of daysArrayNl; let x = index">
+            <div class="day">
+                <div class="text-center">
+                    <h3>{{ dayString }}</h3>
                 </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Type sth">
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Type sth">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h3>Dinsdag</h3>
-            </div>
-            <div class="md-form input-group col-6">
+                <!-- <div class="md-form input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text md-addon">Van en Tot</span>
+                    <span class="input-group-text md-addon">Van - Tot</span>
                 </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Type sth">
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Type sth">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h3>Woensdag</h3>
-            </div>
-            <div class="md-form input-group col-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text md-addon">Van en Tot</span>
+                <input type="time" id="input" class="form-control" value="13:00" mdbInput />
+                <input type="time" id="input" class="form-control" value="13:00" mdbInput />
+            </div> -->
+                <div formArrayName="{{daysArrayEn[x]}}"
+                    *ngFor="let item of days.get(daysArrayEn[x])['controls']; let i = index">
+                    <div [formGroupName]="i">
+                        <div class="md-form input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text md-addon">Van - Tot</span>
+                            </div>
+                            <input type="time" id="input" class="form-control" mdbInput formControlName="start" />
+                            <input type="time" id="input" class="form-control" mdbInput formControlName="end" />
+                            <button type="button" mdbBtn color="danger" mdbWavesEffect
+                                (click)="removeWorkBlock(x, i)">Verwijder</button>
+                        </div>
+                    </div>
                 </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Type sth">
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Type sth">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h3>Donderdag</h3>
-            </div>
-            <div class="md-form input-group col-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text md-addon">Van en Tot</span>
-                </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Type sth">
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Type sth">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h3>Vrijdag</h3>
-            </div>
-            <div class="md-form input-group col-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text md-addon">Van en Tot</span>
-                </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Type sth">
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Type sth">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h3>Zaterdag</h3>
-            </div>
-            <div class="md-form input-group col-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text md-addon">Van en Tot</span>
-                </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Type sth">
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Type sth">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <h3>Zondag</h3>
-            </div>
-            <div class="md-form input-group col-6">
-                <div class="input-group-prepend">
-                    <span class="input-group-text md-addon">Van en Tot</span>
-                </div>
-                <input type="text" aria-label="First name" class="form-control" placeholder="Type sth">
-                <input type="text" aria-label="Last name" class="form-control" placeholder="Type sth">
+                <button type="button" mdbBtn color="primary" mdbWavesEffect (click)="addWorkBlock(x)">Werkblok
+                    toevoegen</button>
             </div>
         </div>
 
