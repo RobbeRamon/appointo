@@ -16,6 +16,13 @@ export class TimeRange {
     return this._endTime;
   }
 
+  toJSON(): TimeRangeJson {
+    return <TimeRangeJson>{
+      startTime: this.startTime.toJSON(),
+      endTime: this.endTime.toJSON(),
+    };
+  }
+
   static fromJSON(json: TimeRangeJson) {
     return new TimeRange(
       Time.fromJSON(json.startTime),

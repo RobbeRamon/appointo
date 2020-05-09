@@ -9,36 +9,50 @@ import { Observable, throwError, BehaviorSubject } from "rxjs";
   providedIn: "root",
 })
 export class HairdresserSettingsDataService {
-  private _currentOpeningHours$ = new BehaviorSubject<Workday[]>([]);
-  private _currentOpeningHours: Workday[];
+  private _currentWorkdays$ = new BehaviorSubject<Workday[]>([]);
+  private _currentWorkdays: Workday[];
 
   constructor(private http: HttpClient) {
-    this.currentOpeningHours$
+    this.currentWorkdays$
       .pipe(
         catchError((err) => {
-          this._currentOpeningHours$.error(err);
+          this._currentWorkdays$.error(err);
           return throwError(err);
         })
       )
       .subscribe((workdays: Workday[]) => {
-        this._currentOpeningHours = workdays;
-        this._currentOpeningHours$.next(workdays);
+        this._currentWorkdays = workdays;
+        this._currentWorkdays$.next(workdays);
       });
   }
 
-  get allCurrentOpeningHours$() {
-    return this._currentOpeningHours$;
+  get allCurrentWorkdays$() {
+    return this._currentWorkdays$;
   }
 
-  get allCurrentOpeningHours() {
-    return this._currentOpeningHours;
+  get allCurrentWorkdays() {
+    return this._currentWorkdays;
   }
 
-  get currentOpeningHours$() {
+  get currentWorkdays$() {
     return this.http.get(`${environment.apiUrl}/manage/workdays`).pipe(
       catchError(this.handleError),
       map((list: any[]): Workday[] => list.map(Workday.fromJSON))
     );
+  }
+
+  changeWorkdays(workdays: Workday[]) {
+    console.log(JSON.stringify(workdays.map((wd) => wd.toJSON())));
+    this.http
+      .post(
+        `${environment.apiUrl}/manage/workdays`,
+        workdays.map((wd) => wd.toJSON())
+      )
+      .pipe(catchError(this.handleError))
+      .subscribe((workdays: Workday[]) => {
+        // this._currentWorkdays = workdays;
+        // this._currentWorkdays$.next(workdays);
+      });
   }
 
   handleError(err: any): Observable<never> {

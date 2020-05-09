@@ -11,16 +11,24 @@ export class Time {
     private _seconds: number
   ) {}
 
-  get hours() {
+  get hours(): number {
     return this._hours;
   }
 
-  get minutes() {
+  get minutes(): number {
     return this._minutes;
   }
 
-  get seconds() {
+  get seconds(): number {
     return this._seconds;
+  }
+
+  toJSON(): TimeJson {
+    return <TimeJson>{
+      hour: this.hours,
+      minute: this.minutes,
+      second: this.seconds,
+    };
   }
 
   static fromJSON(json: TimeJson) {

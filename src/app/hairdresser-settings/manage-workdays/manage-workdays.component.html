@@ -5,7 +5,7 @@
     </div>
 </div>
 <div class="container">
-    <form [formGroup]="days" class="justify-content-md-center">
+    <form [formGroup]="days" (ngSubmit)="onSubmit()" class="justify-content-md-center">
         <div *ngFor="let dayString of daysArrayNl; let x = index">
             <div class="day">
                 <div class="text-center">

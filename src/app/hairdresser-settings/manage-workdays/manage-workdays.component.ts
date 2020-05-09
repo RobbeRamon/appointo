@@ -5,6 +5,7 @@ import { Observable, EMPTY } from "rxjs";
 import { Workday } from "src/app/workday.model";
 import { catchError } from "rxjs/operators";
 import { TimeRange } from "src/app/timerange.model";
+import { Time } from "src/app/time.model";
 
 function validateTimeBlock(control: FormGroup): { [key: string]: any } {
   if (
@@ -24,22 +25,22 @@ function validateTimeBlock(control: FormGroup): { [key: string]: any } {
 export class ManageWorkdaysComponent implements OnInit {
   public days: FormGroup;
   public daysArrayNl = [
+    "Zondag",
     "Maandag",
     "Dinsdag",
     "Woensdag",
     "Donderdag",
     "Vrijdag",
     "Zaterdag",
-    "Zondag",
   ];
   public daysArrayEn = [
+    "sunday",
     "monday",
     "tuesday",
     "wednesday",
     "thursday",
     "friday",
     "saturday",
-    "sunday",
   ];
   private _fetchWorkdays$: Observable<Workday[]>;
   public errorMessage: string;
@@ -51,13 +52,13 @@ export class ManageWorkdaysComponent implements OnInit {
 
   ngOnInit(): void {
     this.days = this.fb.group({
+      sunday: this.fb.array([]),
       monday: this.fb.array([]),
       tuesday: this.fb.array([]),
       wednesday: this.fb.array([]),
       thursday: this.fb.array([]),
       friday: this.fb.array([]),
       saturday: this.fb.array([]),
-      sunday: this.fb.array([]),
     });
     // this.getHours(0).valueChanges.subscribe((hours) => {
     //   const lastElement = hours[hours.length - 1];
@@ -66,7 +67,7 @@ export class ManageWorkdaysComponent implements OnInit {
     //   }
     // });
 
-    this._fetchWorkdays$ = this._hairdresserSettingsData.allCurrentOpeningHours$.pipe(
+    this._fetchWorkdays$ = this._hairdresserSettingsData.allCurrentWorkdays$.pipe(
       catchError((err) => {
         this.errorMessage = err;
         return EMPTY;
@@ -122,5 +123,40 @@ export class ManageWorkdaysComponent implements OnInit {
     this.getHours(day).removeAt(block);
   }
 
-  onSubmit() {}
+  onSubmit() {
+    let workdays: Workday[] = [];
+    let counter: number = 0;
+
+    for (let day in this.days.value) {
+      if (this.days.value[day].length < 1) {
+        workdays.push(new Workday(counter, []));
+      } else {
+        let timeRanges: TimeRange[] = [];
+
+        for (let hour of this.days.value[day]) {
+          let hourArrayStart: number[] = hour.start.split(":");
+          let hourArrayEnd: number[] = hour.end.split(":");
+
+          let startTime: Time = new Time(
+            Number(hourArrayStart[0]),
+            Number(hourArrayStart[1]),
+            0
+          );
+          let endTime: Time = new Time(
+            Number(hourArrayEnd[0]),
+            Number(hourArrayEnd[1]),
+            0
+          );
+
+          timeRanges.push(new TimeRange(startTime, endTime));
+        }
+
+        workdays.push(new Workday(counter, timeRanges));
+      }
+
+      counter++;
+    }
+
+    this._hairdresserSettingsData.changeWorkdays(workdays);
+  }
 }

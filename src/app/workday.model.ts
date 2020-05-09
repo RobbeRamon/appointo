@@ -16,6 +16,13 @@ export class Workday {
     return this._hours;
   }
 
+  toJSON(): WorkdayJson {
+    return <WorkdayJson>{
+      dayId: this.dayId,
+      hours: this.hours.map((value) => value.toJSON()),
+    };
+  }
+
   static fromJSON(json: WorkdayJson): Workday {
     const workday = new Workday(json.dayId, json.hours.map(TimeRange.fromJSON));
     return workday;
