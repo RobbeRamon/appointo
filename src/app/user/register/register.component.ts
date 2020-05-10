@@ -62,23 +62,23 @@ export class RegisterComponent implements OnInit {
       return null;
     }
     if (errors.required) {
-      return "is requried";
+      return "verplicht";
     } else if (errors.minLength) {
-      return `needs at least ${errors.minLength.requiredLength} characters (got ${errors.minLength.actualLength})`;
+      return `heeft minstends ${errors.minLength.requiredLength} karakters nodig (heeft er ${errors.minLength.actualLength})`;
     } else if (errors.hasNumber) {
-      return `needs at least 1 number`;
+      return `heeft minstends 1 nummer nodig`;
     } else if (errors.hasUpperCase) {
-      return `needs at least 1 uppercase`;
+      return `heeft minstends 1 hoofdletter nodig`;
     } else if (errors.hasLowerCase) {
-      return `needs at least 1 lower case letter`;
+      return `heeft minstends 1 kleine letter nodig`;
     } else if (errors.hasSpecialCharacter) {
-      return `needs at least 1 special character`;
+      return `heeft minstends 1 speciaal karakter nodig`;
     } else if (errors.userAlreadyExists) {
-      return `user already exists`;
+      return `gebruiker bestaat al`;
     } else if (errors.email) {
-      return `not a valid email address`;
+      return `het e-mail adres is niet geldig`;
     } else if (errors.passwordsDiffer) {
-      return `passwords are not the same`;
+      return `de wachtwoorden komen niet overeen`;
     }
   }
 
