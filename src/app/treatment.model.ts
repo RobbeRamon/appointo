@@ -70,9 +70,35 @@ export class Treatment {
     this._price = price;
   }
 
+  set name(name) {
+    this._name = name;
+  }
+
+  set category(category) {
+    this._category = category;
+
+    if (this._category === 0) {
+      this._categoryString = Category.MEN;
+    } else if (this._category === 1) {
+      this._categoryString = Category.WOMEN;
+    } else {
+      this._categoryString = Category.CHILDREN;
+    }
+  }
+
   toJSON(): TreatmentJson {
     return <TreatmentJson>{
       id: this.id,
+    };
+  }
+
+  toFullJSON(): TreatmentJson {
+    return <TreatmentJson>{
+      id: this.id,
+      category: this.category,
+      duration: this.duration,
+      name: this.name,
+      price: this.price,
     };
   }
 

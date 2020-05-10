@@ -5,13 +5,28 @@ import { ManageWorkdaysComponent } from "./manage-workdays/manage-workdays.compo
 import { SettingsOverviewComponent } from "./settings-overview/settings-overview.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
+import { ManageTreatmentsComponent } from "./manage-treatments/manage-treatments.component";
+import { EditTreatmentComponent } from "./edit-treatment/edit-treatment.component";
+import { TreatmentResolver } from "./TreatmentResolver";
 
 const routes: Routes = [
   { path: "manage/settings", component: SettingsOverviewComponent },
+  { path: "manage/treatments", component: ManageTreatmentsComponent },
+  { path: "manage/workdays", component: ManageWorkdaysComponent },
+  {
+    path: "manage/treatments/edit/:id",
+    component: EditTreatmentComponent,
+    resolve: { treatment: TreatmentResolver },
+  },
 ];
 
 @NgModule({
-  declarations: [ManageWorkdaysComponent, SettingsOverviewComponent],
+  declarations: [
+    ManageWorkdaysComponent,
+    SettingsOverviewComponent,
+    ManageTreatmentsComponent,
+    EditTreatmentComponent,
+  ],
   imports: [
     CommonModule,
     MdbootstrapModule,

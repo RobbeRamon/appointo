@@ -20,7 +20,7 @@ import { catchError } from "rxjs/operators";
 export class CreateAppointmentComponent implements OnInit {
   public hairdresser: Hairdresser;
   public datePick: FormGroup;
-  public _fetchHours$: Observable<Date[]>;
+  private _fetchHours$: Observable<Date[]>;
 
   constructor(
     private route: ActivatedRoute,

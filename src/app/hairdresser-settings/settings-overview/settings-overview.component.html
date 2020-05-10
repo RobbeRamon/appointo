@@ -1,1 +1,27 @@
-<app-manage-workdays></app-manage-workdays>
+<!-- <app-manage-workdays></app-manage-workdays> -->
+<div class="container">
+    <div class="row pt-5  justify-content-center">
+        <mdb-card class="col-3 card">
+            <mdb-card-body>
+                <mdb-card-title>
+                    <h4>Openingsuren wijzigen</h4>
+                </mdb-card-title>
+                <mdb-card-text>
+                    Wijzig de openingsuren zodat klanten afspraken kunnen maken.
+                </mdb-card-text>
+                <a [routerLink]="['/manage/workdays']" mdbBtn color="primary" mdbWavesEffect>Wijzigen</a>
+            </mdb-card-body>
+        </mdb-card>
+        <mdb-card class="col-3 card">
+            <mdb-card-body>
+                <mdb-card-title>
+                    <h4>Behandelingen wijzigen</h4>
+                </mdb-card-title>
+                <mdb-card-text>
+                    Wijzig de behandelingen die klanten kunnen kiezen.
+                </mdb-card-text>
+                <a [routerLink]="['/manage/treatments']" mdbBtn color="primary" mdbWavesEffect>Wijzigen</a>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
+</div>

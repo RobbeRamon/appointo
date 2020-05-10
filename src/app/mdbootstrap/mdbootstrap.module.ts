@@ -11,6 +11,7 @@ import {
   CarouselModule,
   MDBBootstrapModule,
   InputsModule,
+  TableModule,
 } from "angular-bootstrap-md";
 
 @NgModule({
@@ -26,6 +27,7 @@ import {
     CardsModule,
     InputsModule.forRoot(),
     CarouselModule.forRoot(),
+    TableModule,
   ],
   exports: [
     NavbarModule,
@@ -37,6 +39,7 @@ import {
     CardsModule,
     InputsModule,
     CarouselModule,
+    TableModule,
   ],
 })
 export class MdbootstrapModule {}

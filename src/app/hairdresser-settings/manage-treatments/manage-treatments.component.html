@@ -1,0 +1,30 @@
+<div class="text-center">
+    <a [routerLink]="['/manage/settings']" mdbBtn color="primary" mdbWavesEffect>Terug</a>
+</div>
+<div class="container">
+    <table mdbTable>
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Naam</th>
+                <th scope="col">Man / Vrouw / kinderen</th>
+                <th scope="col">Prijs</th>
+                <th scope="col">Prijs</th>
+
+            </tr>
+        </thead>
+        <tbody *ngIf="treatments$ | async as treatments">
+            <tr mdbTableCol *ngFor="let treatment of treatments">
+                <th scope="row">{{treatment.id}}</th>
+                <td>{{treatment.name}}</td>
+                <td>{{giveCategoryString(treatment.category)}}</td>
+                <td>€{{treatment.price}}</td>
+                <td>
+                    <a [routerLink]="['/manage/treatments/edit/', treatment.id]" mdbBtn color="primary" class="button"
+                        mdbWavesEffect>Wijzig</a>
+                    <a mdbBtn color="danger" class="button" mdbWavesEffect>Verwijder</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

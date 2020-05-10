@@ -1,8 +1,10 @@
 <div class="alert alert-warning" role="alert">
     <div class="text-center">
         Vergeet niet om de uren te bevestigen onderaan de pagina!
-
     </div>
+</div>
+<div class="text-center">
+    <a [routerLink]="['/manage/settings']" mdbBtn color="primary" mdbWavesEffect>Terug</a>
 </div>
 <div class="container">
     <form [formGroup]="days" (ngSubmit)="onSubmit()" class="justify-content-md-center">

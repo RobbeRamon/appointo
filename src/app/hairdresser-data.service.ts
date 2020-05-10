@@ -6,18 +6,20 @@ import { environment } from "src/environments/environment";
 import { map, tap } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class HairdresserDataService {
   constructor(private http: HttpClient) {}
 
   get hairdressers$(): Observable<Hairdresser[]> {
-    return this.http.get(`${environment.apiUrl}/hairdressers`).pipe(
-      map((list: any[]): Hairdresser[] => list.map(Hairdresser.fromJSON))
-    );
+    return this.http
+      .get(`${environment.apiUrl}/hairdressers`)
+      .pipe(
+        map((list: any[]): Hairdresser[] => list.map(Hairdresser.fromJSON))
+      );
   }
 
-  getHairdresser$(id: string): Observable<Hairdresser> {
+  getHairdresser$(id: number): Observable<Hairdresser> {
     return this.http
       .get(`${environment.apiUrl}/hairdressers/${id}`)
       .pipe(map(Hairdresser.fromJSON));

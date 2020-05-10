@@ -1,0 +1,54 @@
+<div class="container pt-5">
+    <div class="row justify-content-md-center">
+        <form class="text-center border border-light p-5 col-lg-4 col-md-12" [formGroup]="treatmentForm"
+            (ngSubmit)="onSubmit()">
+
+            <p class="h4 mb-4">Behandeling</p>
+
+
+            Naam
+            <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" formControlName="name"
+                placeholder="Name">
+            <div class="alert alert-danger" role="alert"
+                *ngIf="treatmentForm.get('name')['errors'] && treatmentForm.get('name').touched">
+                {{ getErrorMessage(treatmentForm.get('name')['errors']) }}
+            </div>
+
+            Prijs (in euro)
+            <input type="number" id="defaultSubscriptionFormEmail" class="form-control mb-4" formControlName="price"
+                placeholder="Prijs" min="0">
+            <div class="alert alert-danger" role="alert"
+                *ngIf="treatmentForm.get('price')['errors'] && treatmentForm.get('price').touched">
+                {{ getErrorMessage(treatmentForm.get('price')['errors']) }}
+            </div>
+
+            Categorie
+            <select formControlName="category" class="custom-select">
+                <option value="0">Man</option>
+                <option value="1">Vrouw</option>
+                <option value="2">Kinderen</option>
+            </select>
+            <div class="alert alert-danger" role="alert"
+                *ngIf="treatmentForm.get('category')['errors'] && treatmentForm.get('category').touched">
+                {{ getErrorMessage(treatmentForm.get('category')['errors']) }}
+            </div>
+
+
+            <button mdbBtn color="primary" block="true" type="submit" [disabled]="treatmentForm.invalid">Wijzig</button>
+            <div class="alert alert-danger" role="alert"
+                *ngIf="treatmentForm.errors && treatmentForm.get('name').touched">
+                {{ getErrorMessage(treatmentForm.errors) }}
+            </div>
+            <a [routerLink]="['/manage/treatments']" mdbBtn color="danger" block="true" class="mt-2">Annuleer</a>
+
+
+        </form>
+
+    </div>
+    <div class="row justify-content-md-center">
+        <div class="alert alert-danger col-lg-4 col-md-12" role="alert"
+            *ngIf="treatmentForm.errors && treatmentForm.get('name').touched">
+            {{ getErrorMessage(treatmentForm.errors) }}
+        </div>
+    </div>
+</div>
