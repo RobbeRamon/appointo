@@ -4,7 +4,7 @@ import { environment } from "src/environments/environment";
 import { catchError, tap, map } from "rxjs/operators";
 import { Workday } from "../workday.model";
 import { Observable, throwError, BehaviorSubject } from "rxjs";
-import { Treatment } from "../treatment.model";
+import { Treatment, TreatmentJson } from "../treatment.model";
 
 @Injectable({
   providedIn: "root",
@@ -104,8 +104,37 @@ export class HairdresserSettingsDataService {
         );
         let index = this._currentTreatments.indexOf(treatment2);
 
-        if (index !== -1) {
+        if (index > -1) {
           this._currentTreatments[index] = treatment;
+        }
+
+        this._currentTreatments$.next(this._currentTreatments);
+      });
+  }
+
+  createTreatment(treatment: Treatment) {
+    console.log(treatment.toFullJSON());
+    this.http
+      .post(`${environment.apiUrl}/manage/treatments/`, treatment.toFullJSON())
+      .pipe(catchError(this.handleError))
+      .subscribe((treatment: TreatmentJson) => {
+        this._currentTreatments.push(Treatment.fromJSON(treatment));
+        this._currentTreatments$.next(this._currentTreatments);
+      });
+  }
+
+  deleteTreatment(treatment: Treatment) {
+    this.http
+      .delete(`${environment.apiUrl}/manage/treatments/${treatment.id}`)
+      .pipe(catchError(this.handleError))
+      .subscribe(() => {
+        let treatment2 = this._currentTreatments.find(
+          (tr) => tr.id === treatment.id
+        );
+        let index = this._currentTreatments.indexOf(treatment2);
+
+        if (index > -1) {
+          this._currentTreatments.splice(index, 1);
         }
 
         this._currentTreatments$.next(this._currentTreatments);

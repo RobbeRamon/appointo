@@ -23,6 +23,14 @@ export class TimeSpan {
     return this._seconds;
   }
 
+  toJSON(): TimeSpanJson {
+    return <TimeSpanJson>{
+      hours: this._hours,
+      minutes: this._minutes,
+      seconds: this._seconds,
+    };
+  }
+
   static fromJSON(json: TimeSpanJson): TimeSpan {
     return new TimeSpan(json.hours, json.minutes, json.seconds);
   }

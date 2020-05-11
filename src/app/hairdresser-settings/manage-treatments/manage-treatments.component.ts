@@ -14,6 +14,8 @@ import { catchError } from "rxjs/operators";
 export class ManageTreatmentsComponent implements OnInit {
   private _fetchTreatments$: Observable<Treatment[]>;
   public errorMessage: string;
+  public warningMessage: string;
+  private _treatment: Treatment;
 
   constructor(
     private _hairdresserSettingsDataSerivce: HairdresserSettingsDataService,
@@ -44,5 +46,15 @@ export class ManageTreatmentsComponent implements OnInit {
       default:
         return "";
     }
+  }
+
+  deleteTreatment(treatment: Treatment) {
+    this._treatment = treatment;
+    this.warningMessage = `Ben je zeker dat je ${treatment.name} (${treatment.categoryString}) wil verwijderen?`;
+  }
+
+  confirmDeleteTreatment() {
+    this._hairdresserSettingsDataSerivce.deleteTreatment(this._treatment);
+    this.warningMessage = "";
   }
 }

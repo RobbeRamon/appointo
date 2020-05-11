@@ -8,6 +8,8 @@ import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 import { ManageTreatmentsComponent } from "./manage-treatments/manage-treatments.component";
 import { EditTreatmentComponent } from "./edit-treatment/edit-treatment.component";
 import { TreatmentResolver } from "./TreatmentResolver";
+import { CreateTreatmentComponent } from "./create-treatment/create-treatment.component";
+import { DeleteTreatmentComponent } from './delete-treatment/delete-treatment.component';
 
 const routes: Routes = [
   { path: "manage/settings", component: SettingsOverviewComponent },
@@ -18,6 +20,10 @@ const routes: Routes = [
     component: EditTreatmentComponent,
     resolve: { treatment: TreatmentResolver },
   },
+  {
+    path: "manage/treatments/create",
+    component: CreateTreatmentComponent,
+  },
 ];
 
 @NgModule({
@@ -26,6 +32,8 @@ const routes: Routes = [
     SettingsOverviewComponent,
     ManageTreatmentsComponent,
     EditTreatmentComponent,
+    CreateTreatmentComponent,
+    DeleteTreatmentComponent,
   ],
   imports: [
     CommonModule,

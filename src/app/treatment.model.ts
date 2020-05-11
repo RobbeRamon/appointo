@@ -8,6 +8,14 @@ export interface TreatmentJson {
   price: number;
 }
 
+export interface TreatmentJson2 {
+  id: number;
+  name: string;
+  duration: string;
+  category: number;
+  price: number;
+}
+
 export enum Category {
   MEN = "Mannen",
   WOMEN = "Vrouwen",
@@ -76,6 +84,10 @@ export class Treatment {
     this._name = name;
   }
 
+  set duration(duration) {
+    this._duration = duration;
+  }
+
   set category(category) {
     this._category = category;
 
@@ -97,8 +109,8 @@ export class Treatment {
   toFullJSON(): TreatmentJson {
     return <TreatmentJson>{
       id: this.id,
-      category: this.category,
-      duration: this.duration,
+      category: Number(this.category),
+      duration: this.duration.toJSON(),
       name: this.name,
       price: this.price,
     };

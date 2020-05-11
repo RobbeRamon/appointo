@@ -1,5 +1,5 @@
-<div class="text-center">
-    <a [routerLink]="['/manage/settings']" mdbBtn color="primary" mdbWavesEffect>Terug</a>
+<div class="text-center mt-5 mb-5">
+
 </div>
 <div class="container">
     <table mdbTable>
@@ -24,9 +24,27 @@
                 <td>
                     <a [routerLink]="['/manage/treatments/edit/', treatment.id]" mdbBtn color="primary" class="button"
                         mdbWavesEffect>Wijzig</a>
-                    <a mdbBtn color="danger" class="button" mdbWavesEffect>Verwijder</a>
+                    <button mdbBtn color="danger" class="button" mdbWavesEffect
+                        (click)="deleteTreatment(treatment)">Verwijder</button>
                 </td>
             </tr>
         </tbody>
     </table>
+    <div *ngIf="warningMessage" class="alert alert-warning" role="alert">
+        {{warningMessage}}
+        <button (click)="confirmDeleteTreatment()" mdbBtn color="danger" mdbWavesEffect>Bevestigen</button>
+
+    </div>
+
+    <div class="row justify-content-start">
+        <div class="col-4">
+            <a [routerLink]="['/manage/settings']" mdbBtn color="primary" mdbWavesEffect>Terug</a>
+        </div>
+
+        <div class="col-8">
+            <a [routerLink]="['/manage/treatments/create/']" mdbBtn color="success" mdbWavesEffect>Nieuwe
+                behandeling aanmaken</a>
+        </div>
+    </div>
+
 </div>
