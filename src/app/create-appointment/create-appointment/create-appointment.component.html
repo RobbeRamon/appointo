@@ -64,7 +64,7 @@
                                             Gekozen behandelingen
                                         </div>
                                         <div *ngFor="let treatment of treatments" class="list-group-item waves-light">
-                                            {{treatment.name}}
+                                            {{treatment.name}}, {{treatment.categoryString}}
                                             <div *ngIf="treatment.amount > 1" class="d-inline-block amount">
                                                 x{{treatment.amount}}
                                             </div>
