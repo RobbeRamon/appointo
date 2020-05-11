@@ -9,7 +9,8 @@
                 <th scope="col">Naam</th>
                 <th scope="col">Man / Vrouw / kinderen</th>
                 <th scope="col">Prijs</th>
-                <th scope="col">Prijs</th>
+                <th scope="col">Duur</th>
+                <th scope="col"></th>
 
             </tr>
         </thead>
@@ -19,6 +20,7 @@
                 <td>{{treatment.name}}</td>
                 <td>{{giveCategoryString(treatment.category)}}</td>
                 <td>€{{treatment.price}}</td>
+                <td>{{treatment.duration.hours}}:{{treatment.duration.minutes}}:{{treatment.duration.seconds}}</td>
                 <td>
                     <a [routerLink]="['/manage/treatments/edit/', treatment.id]" mdbBtn color="primary" class="button"
                         mdbWavesEffect>Wijzig</a>

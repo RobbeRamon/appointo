@@ -1,7 +1,9 @@
+import { TimeSpan, TimeSpanJson } from "./timespan.model";
+
 export interface TreatmentJson {
   id: number;
   name: string;
-  duration: string;
+  duration: TimeSpanJson;
   category: number;
   price: number;
 }
@@ -19,7 +21,7 @@ export class Treatment {
   constructor(
     private _id: number,
     private _name: string,
-    private _duration: string,
+    private _duration: TimeSpan,
     private _category: number,
     private _price: number
   ) {
@@ -106,7 +108,7 @@ export class Treatment {
     const treatment = new Treatment(
       json.id,
       json.name,
-      json.duration,
+      TimeSpan.fromJSON(json.duration),
       json.category,
       json.price
     );

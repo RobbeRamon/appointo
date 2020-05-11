@@ -1,8 +1,18 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+} from "@angular/forms";
 import { HairdresserSettingsDataService } from "../hairdresser-settings-data.service";
 import { Treatment } from "src/app/treatment.model";
-import { ActivatedRoute, Router, RouteReuseStrategy } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+
+function minPrice(control: AbstractControl): { [key: string]: any } {
+  const price = control.get("price");
+  return price.value >= 0 ? null : { priceLessThanZero: true };
+}
 
 @Component({
   selector: "app-edit-treatment",
@@ -24,14 +34,19 @@ export class EditTreatmentComponent implements OnInit {
     this.route.data.subscribe((item) => (this.treatment = item["treatment"]));
     console.log(this.treatment);
 
-    this.treatmentForm = this.fb.group({
-      name: [
-        this.treatment.name,
-        [Validators.required, Validators.minLength(2)],
-      ],
-      category: [this.treatment.category, [Validators.required]],
-      price: [this.treatment.price, [Validators.required]],
-    });
+    this.treatmentForm = this.fb.group(
+      {
+        name: [
+          this.treatment.name,
+          [Validators.required, Validators.minLength(2)],
+        ],
+        category: [this.treatment.category, [Validators.required]],
+        price: [this.treatment.price, [Validators.required]],
+      },
+      { validator: minPrice }
+    );
+
+    console.log(this.treatment.duration);
   }
 
   onSubmit() {
@@ -50,6 +65,8 @@ export class EditTreatmentComponent implements OnInit {
       return "verplicht";
     } else if (errors.minlength) {
       return `minstends ${errors.minlength.requiredLength} karaters nodig (heeft er ${errors.minlength.actualLength})`;
+    } else if (errors.minPrice) {
+      return "prijs mag niet kleiner zijn dan 0";
     }
   }
 }

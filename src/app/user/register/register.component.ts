@@ -92,7 +92,6 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (val) => {
           if (val) {
-            // TODO: navigate to admin panel using this.router.navigate(["/admin"])
             this.router.navigate([""]);
           } else {
             this.errorMessage = `Could not register`;
