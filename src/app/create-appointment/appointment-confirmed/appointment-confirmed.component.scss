@@ -1,0 +1,173 @@
+/* Import Font */
+
+@import url("https://fonts.googleapis.com/css?family=Lato:900");
+
+/* Color palette */
+
+$pug-skin: #ffdbb2;
+$pug-skin--darker: #ffd6a8;
+$pug-details: #794932;
+$pug-details--darker: #4f200a;
+$main-color: dodgerblue;
+
+/* General Styles */
+body {
+  font-family: "Lato", sans-serif;
+}
+
+h2 {
+  color: $pug-skin;
+  text-transform: uppercase;
+}
+
+/* Common Styles */
+
+.absolute-center {
+  display: block;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.absolute-auto {
+  display: block;
+  position: absolute;
+  margin: auto;
+}
+
+.container--center {
+  padding-top: 20px;
+  background-color: $main-color !important;
+  @extend .absolute-center;
+  position: absolute;
+  height: 240px;
+  width: 240px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* Pug */
+
+.dancing-pug {
+  @extend .absolute-center;
+  height: 100px;
+  width: 100px;
+  &:before {
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    border-radius: 40px 40px 0 0;
+    background-color: $pug-skin--darker;
+  }
+}
+
+ul {
+  @extend .absolute-auto;
+  height: 80px;
+  width: 80px;
+  padding: 0;
+  left: 10px;
+  background-color: $pug-skin;
+  border-radius: 50px;
+  list-style: none;
+  animation: pugdancing 1s ease-in-out infinite;
+  &:after {
+    display: block;
+    content: "•	";
+    color: $pug-details--darker;
+    position: absolute;
+    z-index: 2;
+    margin: auto;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    height: 30px;
+    width: 40px;
+    border-radius: 20px;
+    background-color: $pug-details;
+  }
+}
+
+li {
+  @extend .absolute-auto;
+}
+
+.ear {
+  width: 0;
+  z-index: 3;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 20px 16px;
+}
+
+li:nth-child(1) {
+  border-top-color: $pug-details;
+  top: 6px;
+  left: -14px;
+}
+
+li:nth-child(2) {
+  border-top-color: $pug-details;
+  top: 6px;
+  right: -14px;
+}
+
+.eye {
+  background-color: $pug-details--darker;
+  height: 18px;
+  width: 18px;
+  z-index: 3;
+  border-radius: 9px;
+}
+
+li:nth-child(3) {
+  left: 4px;
+  top: 30px;
+}
+
+li:nth-child(4) {
+  right: 4px;
+  top: 30px;
+}
+
+li:nth-child(5) {
+  height: 20px;
+  width: 20px;
+  background-color: $main-color;
+  border-radius: 0 0 10px 10px;
+  z-index: 5;
+  bottom: 4px;
+  left: 50%;
+  margin-left: -10px;
+}
+
+/* Pug animation */
+
+@keyframes pugdancing {
+  0% {
+    left: 5px;
+    top: 0;
+  }
+  25% {
+    left: 10px;
+    top: 10px;
+  }
+  50% {
+    left: 15px;
+    top: 0px;
+  }
+  75% {
+    left: 10px;
+    top: 10px;
+  }
+  100% {
+    left: 5px;
+    top: 0px;
+  }
+}

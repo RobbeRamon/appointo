@@ -14,14 +14,7 @@ export class CreateAppointmentService {
   private _hours$ = new BehaviorSubject<Date[]>([]);
   private _selectedHour: Date;
 
-  constructor(private http: HttpClient) {
-    // this._hours$
-    //   .pipe(catchError(this.handleError))
-    //   .subscribe((hours: Date[]) => {
-    //     this._hours = hours;
-    //     //this._hours$.next(this._hours);
-    //   });
-  }
+  constructor(private http: HttpClient) {}
 
   get hours() {
     return this._hours;
@@ -95,22 +88,29 @@ export class CreateAppointmentService {
     return throwError(errorMessage);
   }
 
-  bookAppointment(id: number, treatments: Treatment[]) {
+  bookAppointment(
+    id: number,
+    treatments: Treatment[],
+    firstname: string,
+    lastname: string
+  ) {
     this.http
       .post(`${environment.apiUrl}/hairdressers/${id}/appointments`, {
+        firstname: firstname,
+        lastname: lastname,
         startMoment: this._selectedHour,
         treatments: treatments.map((tr) => tr.toJSON()),
       })
       .pipe(tap(console.log), catchError(this.handleError))
       .pipe(
-        // temporary fix, while we use the behaviorsubject as a cache stream
         catchError((err) => {
           return throwError(err);
         })
       )
       .subscribe((appoinment) => {
-        // this._recipes = [...this._recipes, rec];
-        // this._recipes$.next(this._recipes);
+        this._hours = [];
+        this._hours$.next(this._hours);
+        this._selectedHour = null;
       });
   }
 }

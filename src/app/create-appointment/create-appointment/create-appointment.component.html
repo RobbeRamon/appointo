@@ -70,10 +70,33 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <form class="text-center border border-light p-5 mt-5" [formGroup]="name"
+                                        (ngSubmit)="submitAppointment()">
+                                        Voornaam
+                                        <input type="text" id="defaultSubscriptionFormPassword"
+                                            class="form-control mb-4" formControlName="firstname"
+                                            placeholder="Voornaam">
+                                        <div class="alert alert-danger" role="alert"
+                                            *ngIf="name.get('firstname')['errors'] && name.get('firstname').touched">
+                                            {{ getErrorMessage(name.get('firstname')['errors']) }}
+                                        </div>
+                                        Achternaam
+                                        <input type="text" id="defaultSubscriptionFormPassword"
+                                            class="form-control mb-4" formControlName="lastname"
+                                            placeholder="Achternaam">
+                                        <div class="alert alert-danger" role="alert"
+                                            *ngIf="name.get('lastname')['errors'] && name.get('lastname').touched">
+                                            {{ getErrorMessage(name.get('lastname')['errors']) }}
+                                        </div>
+                                        <button mdbBtn color="primary" type="submit"
+                                            [disabled]="name.invalid || !hourValid">Bevestig
+                                            afspraak</button>
+                                    </form>
                                 </div>
                             </div>
                         </mdb-card-text>
-                        <button mdbBtn color="primary" (click)="submitAppointment()">Bevestig afspraak</button>
+
+
                     </mdb-card-body>
                 </mdb-card>
             </div>

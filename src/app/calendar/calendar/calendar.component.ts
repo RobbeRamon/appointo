@@ -35,7 +35,10 @@ export class CalendarComponent implements OnInit {
     this._appointmentData.allAppointemnts$.subscribe((apps: Appointment[]) => {
       this.calendarEvents = [];
       apps.forEach((app) => {
-        this.addEvent(app.startMoment.toString(), app.startMoment.toString());
+        this.addEvent(
+          `${app.firstname} ${app.lastname}`,
+          app.startMoment.toString()
+        );
       });
     });
   }

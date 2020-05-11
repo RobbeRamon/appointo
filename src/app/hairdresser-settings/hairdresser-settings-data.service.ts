@@ -74,7 +74,7 @@ export class HairdresserSettingsDataService {
   getTreatment$(id: number): Observable<Treatment> {
     return this.http
       .get(`${environment.apiUrl}/hairdressers/treatments/${id}`)
-      .pipe(map(Treatment.fromJSON));
+      .pipe(catchError(this.handleError), map(Treatment.fromJSON));
   }
 
   changeWorkdays(workdays: Workday[]) {

@@ -82,4 +82,10 @@ export class AppointmentDataService {
       this.fetchAppointments();
     });
   }
+
+  getAppointment$(id: number) {
+    return this.http
+      .get(`${environment.apiUrl}/manage/appointments/${id}`)
+      .pipe(catchError(this.handleError), map(Appointment.fromJSON));
+  }
 }

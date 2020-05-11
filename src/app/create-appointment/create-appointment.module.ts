@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { AvailableHoursComponent } from "./available-hours/available-hours.component";
 import { Routes, RouterModule } from "@angular/router";
 import { HairdresserResolver } from "../hairdresser-detail/HairdresserResolver";
+import { AppointmentConfirmedComponent } from "./appointment-confirmed/appointment-confirmed.component";
 
 const routes: Routes = [
   {
@@ -14,10 +15,18 @@ const routes: Routes = [
     component: CreateAppointmentComponent,
     resolve: { hairdresser: HairdresserResolver },
   },
+  {
+    path: "hairdresser/appointment/confirm",
+    component: AppointmentConfirmedComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [CreateAppointmentComponent, AvailableHoursComponent],
+  declarations: [
+    CreateAppointmentComponent,
+    AvailableHoursComponent,
+    AppointmentConfirmedComponent,
+  ],
   imports: [
     CommonModule,
     MdbootstrapModule,

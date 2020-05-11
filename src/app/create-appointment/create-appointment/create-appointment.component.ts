@@ -10,7 +10,6 @@ import {
 } from "@angular/forms";
 import { CreateAppointmentService } from "src/app/create-appointment.service";
 import { Observable } from "rxjs";
-import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-create-appointment",
@@ -21,6 +20,8 @@ export class CreateAppointmentComponent implements OnInit {
   public hairdresser: Hairdresser;
   public datePick: FormGroup;
   private _fetchHours$: Observable<Date[]>;
+  public name: FormGroup;
+  private _hourValid: Boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +41,11 @@ export class CreateAppointmentComponent implements OnInit {
     });
 
     this._fetchHours$ = this._appointmentDataService.allAvailableHours;
+
+    this.name = this.fb.group({
+      firstname: ["", Validators.required],
+      lastname: ["", Validators.required],
+    });
   }
 
   get hours$(): Observable<Date[]> {
@@ -68,6 +74,10 @@ export class CreateAppointmentComponent implements OnInit {
     return date;
   }
 
+  get hourValid(): Boolean {
+    return this._hourValid;
+  }
+
   dateSubmit() {
     let date = this.datePick.value.date;
     this._appointmentDataService.getAvailableHours$(
@@ -88,13 +98,27 @@ export class CreateAppointmentComponent implements OnInit {
     target.id = "selected";
 
     this._appointmentDataService.selectedHour = hour;
+    this._hourValid = true;
   }
 
   submitAppointment() {
     this._appointmentDataService.bookAppointment(
       this.hairdresser.id,
-      this.treatments
+      this.treatments,
+      this.name.get("firstname").value,
+      this.name.get("lastname").value
     );
-    this.router.navigate([""]);
+
+    this._bookedTreatmentDataService.resetTreatments();
+    this.router.navigate(["hairdresser/appointment/confirm"]);
+  }
+
+  getErrorMessage(errors: any): string {
+    if (!errors) {
+      return null;
+    }
+    if (errors.required) {
+      return "verplicht";
+    }
   }
 }
