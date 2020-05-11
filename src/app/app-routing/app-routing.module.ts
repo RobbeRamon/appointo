@@ -3,6 +3,7 @@ import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
 import { FindHairdresserComponent } from "../hairdresser/find-hairdresser/find-hairdresser.component";
+import { AuthGuard } from "../user/auth.guard";
 
 const appRoutes: Routes = [
   {
@@ -21,6 +22,23 @@ const appRoutes: Routes = [
       ),
     data: { preload: true },
   },
+  {
+    path: "manage",
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import("../hairdresser-settings/hairdresser-settings.module").then(
+        (mod) => mod.HairdresserSettingsModule
+      ),
+    data: { preload: true },
+  },
+  {
+    path: "manage",
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import("../calendar/calendar.module").then((mod) => mod.CalendarModule),
+    data: { preload: true },
+  },
+
   { path: "", component: FindHairdresserComponent },
   { path: "**", component: PageNotFoundComponent },
 ];

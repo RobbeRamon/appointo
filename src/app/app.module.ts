@@ -23,7 +23,6 @@ import { CalendarModule } from "./calendar/calendar.module";
     BrowserAnimationsModule,
     CreateAppointmentModule,
     UserModule,
-    HairdresserSettingsModule,
     CalendarModule,
     AppRoutingModule,
   ],

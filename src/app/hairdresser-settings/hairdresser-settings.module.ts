@@ -9,19 +9,19 @@ import { ManageTreatmentsComponent } from "./manage-treatments/manage-treatments
 import { EditTreatmentComponent } from "./edit-treatment/edit-treatment.component";
 import { TreatmentResolver } from "./TreatmentResolver";
 import { CreateTreatmentComponent } from "./create-treatment/create-treatment.component";
-import { DeleteTreatmentComponent } from './delete-treatment/delete-treatment.component';
+import { DeleteTreatmentComponent } from "./delete-treatment/delete-treatment.component";
 
 const routes: Routes = [
-  { path: "manage/settings", component: SettingsOverviewComponent },
-  { path: "manage/treatments", component: ManageTreatmentsComponent },
-  { path: "manage/workdays", component: ManageWorkdaysComponent },
+  { path: "settings", component: SettingsOverviewComponent },
+  { path: "treatments", component: ManageTreatmentsComponent },
+  { path: "workdays", component: ManageWorkdaysComponent },
   {
-    path: "manage/treatments/edit/:id",
+    path: "treatments/edit/:id",
     component: EditTreatmentComponent,
     resolve: { treatment: TreatmentResolver },
   },
   {
-    path: "manage/treatments/create",
+    path: "treatments/create",
     component: CreateTreatmentComponent,
   },
 ];
@@ -38,8 +38,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MdbootstrapModule,
-    RouterModule.forChild(routes),
     ReactiveFormsModule,
+    RouterModule.forChild(routes),
   ],
 })
 export class HairdresserSettingsModule {}

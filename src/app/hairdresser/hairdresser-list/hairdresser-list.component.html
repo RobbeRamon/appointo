@@ -1,7 +1,7 @@
 <div class="container">
-    <div *ngIf="hairdressers$ | async as hairdressers; else loadingOrError">
-        <div *ngFor="let localHairdresser of hairdressers" class="row">
-            <app-hairdresser class="col-4" [hairdresser]="localHairdresser"></app-hairdresser>
+    <div *ngIf="hairdressers$ | async as hairdressers; else loadingOrError" class="row">
+        <div *ngFor="let localHairdresser of hairdressers" class="col-4">
+            <app-hairdresser [hairdresser]="localHairdresser"></app-hairdresser>
         </div>
     </div>
 </div>

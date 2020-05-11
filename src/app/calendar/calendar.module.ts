@@ -4,9 +4,7 @@ import { CalendarComponent } from "./calendar/calendar.component";
 import { FullCalendarModule } from "@fullcalendar/angular";
 import { Routes, RouterModule } from "@angular/router";
 
-const routes: Routes = [
-  { path: "manage/calendar", component: CalendarComponent },
-];
+const routes: Routes = [{ path: "calendar", component: CalendarComponent }];
 
 @NgModule({
   declarations: [CalendarComponent],
