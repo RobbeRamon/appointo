@@ -10,6 +10,7 @@ import { EditTreatmentComponent } from "./edit-treatment/edit-treatment.componen
 import { TreatmentResolver } from "./TreatmentResolver";
 import { CreateTreatmentComponent } from "./create-treatment/create-treatment.component";
 import { DeleteTreatmentComponent } from "./delete-treatment/delete-treatment.component";
+import { EditHairdresserComponent } from './edit-hairdresser/edit-hairdresser.component';
 
 const routes: Routes = [
   { path: "settings", component: SettingsOverviewComponent },
@@ -34,6 +35,7 @@ const routes: Routes = [
     EditTreatmentComponent,
     CreateTreatmentComponent,
     DeleteTreatmentComponent,
+    EditHairdresserComponent,
   ],
   imports: [
     CommonModule,
