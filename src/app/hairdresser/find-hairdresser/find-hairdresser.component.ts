@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-find-hairdresser",
@@ -9,7 +10,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 export class FindHairdresserComponent implements OnInit {
   public hairdresser: FormGroup;
 
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {
     this.hairdresser = new FormGroup({
@@ -18,6 +19,8 @@ export class FindHairdresserComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.hairdresser.value.name);
+    const val = this.hairdresser.value.name;
+    const params = val ? { queryParams: { filter: val } } : undefined;
+    this._router.navigate(["/hairdresser/list"], params);
   }
 }

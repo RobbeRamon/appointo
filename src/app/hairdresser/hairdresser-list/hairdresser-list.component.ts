@@ -54,14 +54,7 @@ export class HairdresserListComponent implements OnInit {
       );
   }
 
-  ngOnInit(): void {
-    // this._fetchHairdressers$ = this._hairdresserDataService.hairdressers$.pipe(
-    //   catchError((err) => {
-    //     this.errorMessage = err;
-    //     return EMPTY;
-    //   })
-    // );
-  }
+  ngOnInit(): void {}
 
   applyFilter(filter: string) {
     this.filterHairdresserName = filter;
