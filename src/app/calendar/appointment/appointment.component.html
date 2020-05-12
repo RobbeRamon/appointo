@@ -17,6 +17,11 @@
         </div>
 
         <a type="button" mdbBtn color="primary" [routerLink]="['/manage/calendar']" mdbWavesEffect>Terug</a>
-        <button type="button" mdbBtn color="danger" (click)="removeAppointment()" mdbWavesEffect>Verwijder</button>
+        <button type="button" mdbBtn color="danger" (click)="deleteAppointment()" mdbWavesEffect>Verwijder</button>
+        <div *ngIf="warningMessage" class="alert alert-warning mt-4" role="alert">
+            {{warningMessage}}
+            <button (click)="confirmDeleteAppointment()" mdbBtn color="danger" mdbWavesEffect>Bevestigen</button>
+        </div>
     </div>
+
 </div>

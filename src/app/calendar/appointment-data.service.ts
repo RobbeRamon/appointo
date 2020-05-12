@@ -5,6 +5,7 @@ import { Appointment } from "../appointment.model";
 import { BehaviorSubject, Observable, throwError } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import * as SignalR from "@aspnet/signalr";
+import { Treatment } from "../treatment.model";
 
 @Injectable({
   providedIn: "root",
@@ -87,5 +88,24 @@ export class AppointmentDataService {
     return this.http
       .get(`${environment.apiUrl}/manage/appointments/${id}`)
       .pipe(catchError(this.handleError), map(Appointment.fromJSON));
+  }
+
+  deleteAppointment(appointment: Appointment) {
+    return this.http
+      .delete(`${environment.apiUrl}/manage/appointments/${appointment.id}`)
+      .pipe(catchError(this.handleError))
+      .subscribe(() => {
+        let appointment2 = this._appointments.find(
+          (tr) => tr.id === appointment.id
+        );
+
+        let index = this._appointments.indexOf(appointment2);
+
+        if (index > -1) {
+          this._appointments.splice(index, 1);
+        }
+
+        this._appointments$.next(this._appointments);
+      });
   }
 }
