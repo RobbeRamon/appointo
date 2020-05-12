@@ -18,16 +18,16 @@ export class CalendarComponent implements OnInit {
   constructor(private _appointmentData: AppointmentDataService) {}
 
   ngOnInit(): void {
-    this.addEvent("event 2", "2020-05-07");
     this.fillCalendar();
     this._appointmentData.startConnection();
     this._appointmentData.addAppointmentsListener();
   }
 
-  addEvent(title: string, date: string) {
+  addEvent(title: string, date: string, id: number) {
     this.calendarEvents = this.calendarEvents.concat({
       title: title,
       date: date,
+      url: `manage/appointment/${id}`,
     });
   }
 
@@ -37,7 +37,8 @@ export class CalendarComponent implements OnInit {
       apps.forEach((app) => {
         this.addEvent(
           `${app.firstname} ${app.lastname}`,
-          app.startMoment.toString()
+          app.startMoment.toString(),
+          app.id
         );
       });
     });

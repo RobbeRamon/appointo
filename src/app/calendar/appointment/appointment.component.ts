@@ -19,5 +19,8 @@ export class AppointmentComponent implements OnInit {
     this.route.data.subscribe(
       (item) => (this.appointment = item["appointment"])
     );
+    console.log(this.appointment);
   }
+
+  removeAppointment() {}
 }

@@ -1,6 +1,7 @@
 import { Treatment } from "./treatment.model";
 
 interface AppointmentJson {
+  id: number;
   firstname: string;
   lastname: string;
   startMoment: Date;
@@ -10,6 +11,7 @@ interface AppointmentJson {
 
 export class Appointment {
   private _treatments: Treatment[];
+  private _id: number;
 
   constructor(
     private _startMoment: Date,
@@ -17,7 +19,7 @@ export class Appointment {
     private _lastname: string
   ) {}
 
-  get startMoment() {
+  get startMoment(): Date {
     return this._startMoment;
   }
 
@@ -33,6 +35,14 @@ export class Appointment {
     return this._lastname;
   }
 
+  get id() {
+    return this._id;
+  }
+
+  set id(id) {
+    this._id = id;
+  }
+
   set treatments(treatments: Treatment[]) {
     this._treatments = treatments;
   }
@@ -43,21 +53,13 @@ export class Appointment {
       json.firstname,
       json.lastname
     );
-    const newTreatments: Treatment[] = [];
-    for (let treatment of json.treatments) {
-      newTreatments.push(
-        new Treatment(
-          treatment.id,
-          treatment.name,
-          treatment.duration,
-          treatment.category,
-          treatment.price
-        )
-      );
 
-      appointment.treatments = newTreatments;
+    appointment.id = json.id;
 
-      return appointment;
-    }
+    appointment.treatments = json.treatments.map((tr) =>
+      Treatment.fromJSON(tr)
+    );
+
+    return appointment;
   }
 }

@@ -1,22 +1,22 @@
-<form class="text-center border border-light p-5">
+<div class="row justify-content-center pt-5">
+    <div class="text-center border border-light p-5 appointment shadow">
 
-    <p class="h4 mb-4">Subscribe</p>
+        <p class="h4 mb-4">{{appointment.firstname}} {{appointment.lastname}}</p>
 
-    <p>Join our mailing list. We write rarely, but only with the best content.</p>
+        <div class="row justify-content-center">
+            <input type="text" id="defaultLoginFormEmail" class="form-control mb-4 col-4 mr-2 text-center"
+                value="{{appointment.startMoment.toString().substring(0,9)}}" disabled="true">
+            <input type="text" id="defaultLoginFormEmail" class="form-control mb-4 col-4 ml-2 text-center"
+                value="{{appointment.startMoment.toString().substring(11,16)}}" disabled="true">
+        </div>
 
-    <p>
-        <a href="" target="_blank">See the last newsletter</a>
-    </p>
+        Behandelingen
+        <div *ngFor="let treatment of appointment.treatments">
+            <input type="text" id="defaultLoginFormEmail" class="form-control mb-4 text-center"
+                value="{{treatment.name}}, {{treatment.categoryString}} (€{{treatment.price}})" disabled="true">
+        </div>
 
-
-    <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Name">
-
-
-    <input type="email" id="defaultSubscriptionFormEmail" class="form-control mb-4" placeholder="E-mail">
-
-
-    <button mdbBtn color="info" block="true" type="submit">Sign in</button>
-
-
-</form>
-{{appointment.startMoment}}
+        <a type="button" mdbBtn color="primary" [routerLink]="['/manage/calendar']" mdbWavesEffect>Terug</a>
+        <button type="button" mdbBtn color="danger" (click)="removeAppointment()" mdbWavesEffect>Verwijder</button>
+    </div>
+</div>
