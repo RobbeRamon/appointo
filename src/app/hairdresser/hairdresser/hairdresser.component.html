@@ -12,13 +12,12 @@
     <!--Card content-->
     <mdb-card-body>
         <!--Title-->
-        <mdb-card-title>
+        <mdb-card-title data-cy="hairdresser-title">
             <h4>{{this.hairdresser.name}}</h4>
         </mdb-card-title>
 
         <!--Text-->
-        <mdb-card-text> Some quick example text to build on the card title and make up the bulk of the card's
-            content.
+        <mdb-card-text> Maak vandaag nog een afspraak bij deze kapper!
         </mdb-card-text>
 
         <a mdbBtn color="primary" mdbWavesEffect [routerLink]="['/hairdresser/detail/', this.hairdresser.id]">Meer

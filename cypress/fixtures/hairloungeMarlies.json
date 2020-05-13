@@ -1,0 +1,64 @@
+{
+  "id": 1,
+  "email": "hairloungemarlies@gmail.com",
+  "name": "Hairlounge Marlies",
+  "treatments": [
+    {
+      "id": 1,
+      "name": "Knippen",
+      "duration": {
+        "ticks": 12000000000,
+        "days": 0,
+        "hours": 0,
+        "milliseconds": 0,
+        "minutes": 20,
+        "seconds": 0,
+        "totalDays": 0.013888888888888888,
+        "totalHours": 0.3333333333333333,
+        "totalMilliseconds": 1200000,
+        "totalMinutes": 20,
+        "totalSeconds": 1200
+      },
+      "category": 0,
+      "price": 20
+    },
+    {
+      "id": 2,
+      "name": "Knippen",
+      "duration": {
+        "ticks": 12000000000,
+        "days": 0,
+        "hours": 0,
+        "milliseconds": 0,
+        "minutes": 20,
+        "seconds": 0,
+        "totalDays": 0.013888888888888888,
+        "totalHours": 0.3333333333333333,
+        "totalMilliseconds": 1200000,
+        "totalMinutes": 20,
+        "totalSeconds": 1200
+      },
+      "category": 1,
+      "price": 30
+    },
+    {
+      "id": 3,
+      "name": "Knippen",
+      "duration": {
+        "ticks": 12000000000,
+        "days": 0,
+        "hours": 0,
+        "milliseconds": 0,
+        "minutes": 20,
+        "seconds": 0,
+        "totalDays": 0.013888888888888888,
+        "totalHours": 0.3333333333333333,
+        "totalMilliseconds": 1200000,
+        "totalMinutes": 20,
+        "totalSeconds": 1200
+      },
+      "category": 2,
+      "price": 10
+    }
+  ]
+}

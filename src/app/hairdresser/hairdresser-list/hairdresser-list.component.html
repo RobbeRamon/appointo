@@ -2,7 +2,8 @@
     <div class="container">
         <div class="md-form">
             <input mdbInput type="text" id="form1" class="form-control"
-                (keyup)="filterHairdresser$.next($event.target.value)" [value]="filterHairdresserName">
+                (keyup)="filterHairdresser$.next($event.target.value)" [value]="filterHairdresserName"
+                data-cy="filterInput">
             <label for="form1" class="">Zoek op naam</label>
         </div>
     </div>
@@ -11,7 +12,7 @@
 
 <div class="container">
     <div *ngIf="hairdressers$ | async as hairdressers; else loadingOrError" class="row">
-        <div *ngFor="let localHairdresser of hairdressers" class="col-4">
+        <div *ngFor="let localHairdresser of hairdressers" class="col-4" data-cy="hairdresserCard">
             <app-hairdresser [hairdresser]="localHairdresser"></app-hairdresser>
         </div>
     </div>
