@@ -15,7 +15,8 @@
                                     <form [formGroup]="datePick" (ngSubmit)="dateSubmit()">
                                         <mat-form-field>
                                             <mat-label>Kies een datum</mat-label>
-                                            <input matInput [matDatepicker]="picker" formControlName="date" required>
+                                            <input matInput [matDatepicker]="picker" formControlName="date"
+                                                [min]="currentDate" required>
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker></mat-datepicker>
                                         </mat-form-field>

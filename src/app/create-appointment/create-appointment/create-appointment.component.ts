@@ -22,6 +22,7 @@ export class CreateAppointmentComponent implements OnInit {
   private _fetchHours$: Observable<Date[]>;
   public name: FormGroup;
   private _hourValid: Boolean = false;
+  public currentDate: Date = new Date();
 
   constructor(
     private route: ActivatedRoute,
