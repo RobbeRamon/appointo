@@ -2,9 +2,16 @@
 <mdb-card>
     <div class="view rgba-white-slight waves-light" mdbWavesEffect>
         <!-- Card img -->
-        <mdb-card-img src="https://cdn.pixabay.com/photo/2019/03/08/20/17/beauty-salon-4043096_960_720.jpg"
-            alt="Card image cap">
-        </mdb-card-img>
+        <div *ngIf="hairdresser.cardImagePath else defaultCardImage">
+            <mdb-card-img [src]="createImagePath(hairdresser.cardImagePath)" alt="Card image cap">
+            </mdb-card-img>
+        </div>
+        <ng-template #defaultCardImage>
+            <mdb-card-img src="https://cdn.pixabay.com/photo/2019/03/08/20/17/beauty-salon-4043096_960_720.jpg"
+                alt="Card image cap">
+            </mdb-card-img>
+        </ng-template>
+
         <a>
             <div class="mask"></div>
         </a>

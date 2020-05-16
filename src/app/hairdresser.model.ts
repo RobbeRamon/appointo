@@ -5,11 +5,15 @@ interface HairdresserJson {
   id: number;
   name: string;
   treatments: TreatmentJson[];
+  bannerPath: string;
+  cardImagePath: string;
 }
 
 export class Hairdresser {
   private _id: number;
   private _treatments: Treatment[];
+  private _bannerPath: string;
+  private _cardImagePath: string;
 
   constructor(private _name: string) {}
 
@@ -25,6 +29,22 @@ export class Hairdresser {
     return this._treatments;
   }
 
+  get bannerPath() {
+    return this._bannerPath;
+  }
+
+  get cardImagePath() {
+    return this._cardImagePath;
+  }
+
+  set bannerPath(bannerPath: string) {
+    this._bannerPath = bannerPath;
+  }
+
+  set cardImagePath(cardImagePath: string) {
+    this._cardImagePath = cardImagePath;
+  }
+
   static fromJSON(json: HairdresserJson): Hairdresser {
     const hairdresser = new Hairdresser(json.name);
     hairdresser._id = json.id;
@@ -38,6 +58,9 @@ export class Hairdresser {
           tr.price
         )
     );
+    hairdresser.bannerPath = json.bannerPath;
+    hairdresser.cardImagePath = json.cardImagePath;
+    console.log(hairdresser.cardImagePath);
     return hairdresser;
   }
 }

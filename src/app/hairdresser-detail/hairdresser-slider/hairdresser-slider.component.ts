@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Hairdresser } from "src/app/hairdresser.model";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-hairdresser-slider",
@@ -12,4 +13,8 @@ export class HairdresserSliderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  createImagePath(path: string): string {
+    return `${environment.fullApiUrl}/${path}`;
+  }
 }

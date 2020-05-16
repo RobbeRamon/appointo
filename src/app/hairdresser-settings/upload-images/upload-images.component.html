@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="jumbotron mt-4">
+        <h1>Bannerafbeelding van je persoonlijke pagina</h1>
+        <p class="lead">Verander hier de bannerafbeelding van je persoonlijke pagina. Dit zal rechtstreeks effect
+            hebbent.
+        </p>
+        <input type="file" #file accept="image/x-png,image/jpeg" (change)="uploadBannerImage(file.files)"
+            style="display:none" />
+        <button mdbBtn color="primary" size="lg" role="button" (click)="file.click()" mdbWavesEffect>afbeelding
+            uploaden</button>
+        <div class="col-4">
+            <span class="upload" *ngIf="bannerImageProgress > 0">
+                ({{bannerImageProgress}}%)
+            </span>
+            <span class="upload" *ngIf="bannerImageMessage">
+                {{bannerImageMessage}}
+            </span>
+        </div>
+    </div>
+    <div class="jumbotron mt-4">
+        <h1>Kaartafbeelding bij de lijst van kappers</h1>
+        <p class="lead">Verander hier de Kaartafbeelding die zichtbaar is bij de lijst van kappers op de website.
+        </p>
+        <input type="file" #file2 accept="image/x-png,image/jpeg" (change)="uploadCardImage(file2.files)"
+            style="display:none" />
+        <button mdbBtn color="primary" size="lg" role="button" (click)="file2.click()" mdbWavesEffect>afbeelding
+            uploaden</button>
+        <div class="col-4">
+            <span class="upload" *ngIf="cardImageProgress > 0">
+                ({{cardImageProgress}}%)
+            </span>
+            <span class="upload" *ngIf="cardImageMessage">
+                {{cardImageMessage}}
+            </span>
+        </div>
+    </div>
+</div>

@@ -10,7 +10,8 @@ import { EditTreatmentComponent } from "./edit-treatment/edit-treatment.componen
 import { TreatmentResolver } from "./TreatmentResolver";
 import { CreateTreatmentComponent } from "./create-treatment/create-treatment.component";
 import { DeleteTreatmentComponent } from "./delete-treatment/delete-treatment.component";
-import { EditHairdresserComponent } from './edit-hairdresser/edit-hairdresser.component';
+import { EditHairdresserComponent } from "./edit-hairdresser/edit-hairdresser.component";
+import { UploadImagesComponent } from "./upload-images/upload-images.component";
 
 const routes: Routes = [
   { path: "settings", component: SettingsOverviewComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
     path: "treatments/create",
     component: CreateTreatmentComponent,
   },
+  { path: "images", component: UploadImagesComponent },
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ const routes: Routes = [
     CreateTreatmentComponent,
     DeleteTreatmentComponent,
     EditHairdresserComponent,
+    UploadImagesComponent,
   ],
   imports: [
     CommonModule,
