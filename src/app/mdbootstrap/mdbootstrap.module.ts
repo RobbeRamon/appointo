@@ -24,7 +24,7 @@ import {
     IconsModule,
     DropdownModule.forRoot(),
     InputUtilitiesModule,
-    CardsModule,
+    CardsModule.forRoot(),
     InputsModule.forRoot(),
     CarouselModule.forRoot(),
     TableModule,

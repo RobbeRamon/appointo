@@ -5,9 +5,10 @@ import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 import { BenefitsComponent } from "./benefits/benefits.component";
 import { LandingComponent } from "./landing/landing.component";
 import { FindHairdresserComponent } from "./find-hairdresser/find-hairdresser.component";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [BenefitsComponent, LandingComponent, FindHairdresserComponent],
+  declarations: [BenefitsComponent, LandingComponent, FindHairdresserComponent, FooterComponent],
   imports: [CommonModule, MdbootstrapModule, ReactiveFormsModule],
   exports: [FindHairdresserComponent],
 })

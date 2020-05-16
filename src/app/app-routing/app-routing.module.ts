@@ -4,6 +4,8 @@ import { CommonModule } from "@angular/common";
 import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
 import { FindHairdresserComponent } from "../landing/find-hairdresser/find-hairdresser.component";
 import { AuthGuard } from "../user/auth.guard";
+import { LandingModule } from "../landing/landing.module";
+import { LandingComponent } from "../landing/landing/landing.component";
 
 const appRoutes: Routes = [
   {
@@ -39,7 +41,7 @@ const appRoutes: Routes = [
     data: { preload: true },
   },
 
-  { path: "", component: FindHairdresserComponent },
+  { path: "", component: LandingComponent },
   { path: "**", component: PageNotFoundComponent },
 ];
 

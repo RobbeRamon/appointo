@@ -11,14 +11,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CreateAppointmentModule } from "./create-appointment/create-appointment.module";
 import { UserModule } from "./user/user.module";
 import { httpInterceptorProviders } from "./interceptor/providers";
-import { HairdresserSettingsModule } from "./hairdresser-settings/hairdresser-settings.module";
 import { CalendarModule } from "./calendar/calendar.module";
+import { LandingModule } from "./landing/landing.module";
 
 @NgModule({
   declarations: [AppComponent, MainNavComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     MdbootstrapModule,
+    LandingModule,
     HairdresserModule,
     BrowserAnimationsModule,
     CreateAppointmentModule,
