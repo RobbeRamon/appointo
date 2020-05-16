@@ -6,17 +6,12 @@ import { HairdresserComponent } from "./hairdresser/hairdresser.component";
 import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HairdresserListComponent } from "./hairdresser-list/hairdresser-list.component";
-import { FindHairdresserComponent } from "./find-hairdresser/find-hairdresser.component";
 import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [{ path: "list", component: HairdresserListComponent }];
 
 @NgModule({
-  declarations: [
-    HairdresserComponent,
-    HairdresserListComponent,
-    FindHairdresserComponent,
-  ],
+  declarations: [HairdresserComponent, HairdresserListComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -24,10 +19,6 @@ const routes: Routes = [{ path: "list", component: HairdresserListComponent }];
     ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
-  exports: [
-    HairdresserComponent,
-    HairdresserListComponent,
-    FindHairdresserComponent,
-  ],
+  exports: [HairdresserComponent, HairdresserListComponent],
 })
 export class HairdresserModule {}

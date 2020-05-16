@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { PageNotFoundComponent } from "../page-not-found/page-not-found.component";
-import { FindHairdresserComponent } from "../hairdresser/find-hairdresser/find-hairdresser.component";
+import { FindHairdresserComponent } from "../landing/find-hairdresser/find-hairdresser.component";
 import { AuthGuard } from "../user/auth.guard";
 
 const appRoutes: Routes = [

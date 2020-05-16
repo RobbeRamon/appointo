@@ -4,16 +4,11 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { MdbootstrapModule } from "../mdbootstrap/mdbootstrap.module";
 import { BenefitsComponent } from "./benefits/benefits.component";
 import { LandingComponent } from "./landing/landing.component";
-import { HairdresserModule } from "../hairdresser/hairdresser.module";
+import { FindHairdresserComponent } from "./find-hairdresser/find-hairdresser.component";
 
 @NgModule({
-  declarations: [BenefitsComponent, LandingComponent],
-  imports: [
-    CommonModule,
-    MdbootstrapModule,
-    ReactiveFormsModule,
-    HairdresserModule,
-  ],
-  exports: [],
+  declarations: [BenefitsComponent, LandingComponent, FindHairdresserComponent],
+  imports: [CommonModule, MdbootstrapModule, ReactiveFormsModule],
+  exports: [FindHairdresserComponent],
 })
 export class LandingModule {}
