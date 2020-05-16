@@ -70,7 +70,8 @@ html {
 
 .pricing-header {
   color: white;
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 1.6em;
   letter-spacing: 1px;
 }
 
@@ -78,6 +79,9 @@ html {
   color: white;
   font-size: 6em;
   margin-bottom: 50px;
+}
+
+.animation {
   animation-name: fade-in;
   animation-duration: 1s;
 }
