@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
               this.router.navigateByUrl(this.authSerivce.redirectUrl);
               this.authSerivce.redirectUrl = "";
             } else {
-              this.router.navigate([""]);
+              this.router.navigate(["/manage/calendar"]);
             }
           } else {
             this.errorMessage = "Could not login";
