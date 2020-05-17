@@ -10,7 +10,6 @@ import { EditTreatmentComponent } from "./edit-treatment/edit-treatment.componen
 import { TreatmentResolver } from "./TreatmentResolver";
 import { CreateTreatmentComponent } from "./create-treatment/create-treatment.component";
 import { DeleteTreatmentComponent } from "./delete-treatment/delete-treatment.component";
-import { EditHairdresserComponent } from "./edit-hairdresser/edit-hairdresser.component";
 import { UploadImagesComponent } from "./upload-images/upload-images.component";
 
 const routes: Routes = [
@@ -37,7 +36,6 @@ const routes: Routes = [
     EditTreatmentComponent,
     CreateTreatmentComponent,
     DeleteTreatmentComponent,
-    EditHairdresserComponent,
     UploadImagesComponent,
   ],
   imports: [

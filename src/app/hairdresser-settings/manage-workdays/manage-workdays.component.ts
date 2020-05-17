@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, FormArray } from "@angular/forms";
+import { FormGroup, FormBuilder, FormArray, Validators } from "@angular/forms";
 import { HairdresserSettingsDataService } from "../hairdresser-settings-data.service";
 import { Observable, EMPTY } from "rxjs";
 import { Workday } from "src/app/workday.model";
@@ -9,8 +9,8 @@ import { Time } from "src/app/time.model";
 
 function validateTimeBlock(control: FormGroup): { [key: string]: any } {
   if (
-    control.get("start").value.substring(0, 1) >=
-    control.get("end").value.substring(0, 1)
+    control.get("start").value.substring(0, 2) >=
+    control.get("end").value.substring(0, 2)
   ) {
     if (
       control.get("start").value.substring(3, 5) >=
@@ -196,5 +196,14 @@ export class ManageWorkdaysComponent implements OnInit {
     this._hairdresserSettingsData.changeWorkdays(workdays);
 
     this.message = "De wijzigingen zijn doorgevoerd";
+  }
+
+  getErrorMessage(errors: any): string {
+    if (!errors) {
+      return null;
+    }
+    if (errors.hoursNotCorrect) {
+      return "Een einduur mag niet voor een beginuur komen";
+    }
   }
 }
