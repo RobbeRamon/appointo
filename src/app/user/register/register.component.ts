@@ -92,16 +92,16 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (val) => {
           if (val) {
-            this.router.navigate([""]);
+            this.router.navigate(["/manage/settings"]);
           } else {
-            this.errorMessage = `Could not register`;
+            this.errorMessage = `Registeren was niet mogelijk`;
           }
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
-            this.errorMessage = `Error while trying to register user ${this.register.value.email}: ${err.error.message}`;
+            this.errorMessage = `Error bij het registeren van gebruiker ${this.register.value.email}: ${err.error.message}`;
           } else {
-            this.errorMessage = `Error ${err.status} while trying to register user ${this.register.value.email}: ${err.error.message}`;
+            this.errorMessage = `Error ${err.status} bij het registeren van gebruiker ${this.register.value.email}: ${err.error.message}`;
           }
         }
       );

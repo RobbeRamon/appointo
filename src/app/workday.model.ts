@@ -1,6 +1,6 @@
 import { TimeRange, TimeRangeJson } from "./timerange.model";
 
-interface WorkdayJson {
+export interface WorkdayJson {
   dayId: number;
   hours: TimeRangeJson[];
 }

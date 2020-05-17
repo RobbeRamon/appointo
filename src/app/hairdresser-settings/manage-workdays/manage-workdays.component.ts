@@ -9,10 +9,15 @@ import { Time } from "src/app/time.model";
 
 function validateTimeBlock(control: FormGroup): { [key: string]: any } {
   if (
-    new Date(control.get("start").value).getTime() >=
-    new Date(control.get("end").value).getTime()
+    control.get("start").value.substring(0, 1) >=
+    control.get("end").value.substring(0, 1)
   ) {
-    return { hoursNotCorrect: true };
+    if (
+      control.get("start").value.substring(3, 5) >=
+      control.get("end").value.substring(3, 5)
+    ) {
+      return { hoursNotCorrect: true };
+    }
   }
   return null;
 }
@@ -44,6 +49,7 @@ export class ManageWorkdaysComponent implements OnInit {
   ];
   private _fetchWorkdays$: Observable<Workday[]>;
   public errorMessage: string;
+  public message: string;
 
   constructor(
     private fb: FormBuilder,
@@ -51,15 +57,15 @@ export class ManageWorkdaysComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.days = this.fb.group({
-      sunday: this.fb.array([]),
-      monday: this.fb.array([]),
-      tuesday: this.fb.array([]),
-      wednesday: this.fb.array([]),
-      thursday: this.fb.array([]),
-      friday: this.fb.array([]),
-      saturday: this.fb.array([]),
-    });
+    // this.days = this.fb.group({
+    //   sunday: this.fb.array([]),
+    //   monday: this.fb.array([]),
+    //   tuesday: this.fb.array([]),
+    //   wednesday: this.fb.array([]),
+    //   thursday: this.fb.array([]),
+    //   friday: this.fb.array([]),
+    //   saturday: this.fb.array([]),
+    // });
     // this.getHours(0).valueChanges.subscribe((hours) => {
     //   const lastElement = hours[hours.length - 1];
     //   if (lastElement.start && lastElement.end) {
@@ -75,6 +81,7 @@ export class ManageWorkdaysComponent implements OnInit {
     );
 
     this.workDays$.subscribe((workdays) => {
+      this.createCleanForm();
       for (let workday of workdays) {
         for (let timeBlock of workday.hours) {
           this.addWorkBlockWithTime(workday.dayId, timeBlock);
@@ -85,6 +92,18 @@ export class ManageWorkdaysComponent implements OnInit {
 
   get workDays$() {
     return this._fetchWorkdays$;
+  }
+
+  createCleanForm() {
+    this.days = this.fb.group({
+      sunday: this.fb.array([]),
+      monday: this.fb.array([]),
+      tuesday: this.fb.array([]),
+      wednesday: this.fb.array([]),
+      thursday: this.fb.array([]),
+      friday: this.fb.array([]),
+      saturday: this.fb.array([]),
+    });
   }
 
   getHours(day: number): FormArray {
@@ -102,10 +121,27 @@ export class ManageWorkdaysComponent implements OnInit {
   }
 
   createTimeBlockWithTime(hour: TimeRange): FormGroup {
+    let startHours: string =
+      hour.startTime.hours < 10
+        ? `0${hour.startTime.hours}`
+        : `${hour.startTime.hours}`;
+    let startMinutes: string =
+      hour.startTime.minutes < 10
+        ? `0${hour.startTime.minutes}`
+        : `${hour.startTime.minutes}`;
+    let endHours: string =
+      hour.endTime.hours < 10
+        ? `0${hour.endTime.hours}`
+        : `${hour.endTime.hours}`;
+    let endMinutes: string =
+      hour.endTime.minutes < 10
+        ? `0${hour.endTime.minutes}`
+        : `${hour.endTime.minutes}`;
+
     return this.fb.group(
       {
-        start: [`${hour.startTime.hours}:${hour.startTime.minutes}`],
-        end: [`${hour.endTime.hours}:${hour.endTime.minutes}`],
+        start: [`${startHours}:${startMinutes}`],
+        end: [`${endHours}:${endMinutes}`],
       },
       { validator: validateTimeBlock }
     );
@@ -158,5 +194,7 @@ export class ManageWorkdaysComponent implements OnInit {
     }
 
     this._hairdresserSettingsData.changeWorkdays(workdays);
+
+    this.message = "De wijzigingen zijn doorgevoerd";
   }
 }

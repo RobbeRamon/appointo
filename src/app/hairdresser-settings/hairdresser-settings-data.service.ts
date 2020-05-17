@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import { catchError, tap, map } from "rxjs/operators";
-import { Workday } from "../workday.model";
+import { Workday, WorkdayJson } from "../workday.model";
 import { Observable, throwError, BehaviorSubject } from "rxjs";
 import { Treatment, TreatmentJson } from "../treatment.model";
 
@@ -85,9 +85,9 @@ export class HairdresserSettingsDataService {
         workdays.map((wd) => wd.toJSON())
       )
       .pipe(catchError(this.handleError))
-      .subscribe((workdays: Workday[]) => {
-        // this._currentWorkdays = workdays;
-        // this._currentWorkdays$.next(workdays);
+      .subscribe((workdays: WorkdayJson[]) => {
+        this._currentWorkdays = workdays.map((wd) => Workday.fromJSON(wd));
+        this._currentWorkdays$.next(this._currentWorkdays);
       });
   }
 

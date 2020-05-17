@@ -93,6 +93,8 @@ export class AuthenticationService {
     }
 
     this.router.navigate(["/"]);
+
+    location.reload(true); // clear all the data that is stored in the browser
   }
 
   checkUsernameAvailability = (email: string): Observable<boolean> => {

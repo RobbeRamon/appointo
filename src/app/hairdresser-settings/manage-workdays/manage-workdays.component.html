@@ -38,6 +38,12 @@
                     toevoegen</button>
             </div>
         </div>
-        <button mdbBtn color="primary" block="true" class="my-4" type="submit">Bevestig</button>
+        <div *ngIf="message" class="alert alert-success" role="alert">
+            <div class="text-center">
+                {{message}}
+            </div>
+        </div>
+        <button mdbBtn color="primary" block="true" class="my-4" type="submit"
+            [disabled]="days.invalid">Bevestig</button>
     </form>
 </div>
