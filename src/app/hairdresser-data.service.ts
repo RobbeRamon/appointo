@@ -8,6 +8,7 @@ import { Observable, BehaviorSubject, throwError } from "rxjs";
 import { Hairdresser } from "./hairdresser.model";
 import { environment } from "src/environments/environment";
 import { map, tap, switchMap, catchError } from "rxjs/operators";
+import { BookedTreatmentDataService } from "./booked-treatment-data.service";
 
 @Injectable({
   providedIn: "root",

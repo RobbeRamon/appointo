@@ -47,6 +47,8 @@ export class CreateAppointmentComponent implements OnInit {
       firstname: ["", Validators.required],
       lastname: ["", Validators.required],
     });
+
+    this._appointmentDataService.resetHours();
   }
 
   get hours$(): Observable<Date[]> {

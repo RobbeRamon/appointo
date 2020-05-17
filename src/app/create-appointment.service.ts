@@ -113,4 +113,9 @@ export class CreateAppointmentService {
         this._selectedHour = null;
       });
   }
+
+  resetHours() {
+    this._hours = [];
+    this._hours$.next(this._hours);
+  }
 }

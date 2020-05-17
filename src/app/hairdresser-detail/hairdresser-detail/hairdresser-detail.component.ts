@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HairdresserDataService } from "src/app/hairdresser-data.service";
 import { Hairdresser } from "src/app/hairdresser.model";
+import { BookedTreatmentDataService } from "src/app/booked-treatment-data.service";
 
 @Component({
   selector: "app-hairdresser-detail",
@@ -13,12 +14,13 @@ export class HairdresserDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private hairdresserDateService: HairdresserDataService
+    private _bookedTreatmentDataServce: BookedTreatmentDataService
   ) {}
 
   ngOnInit(): void {
     this.route.data.subscribe(
       (item) => (this.hairdresser = item["hairdresser"])
     );
+    this._bookedTreatmentDataServce.resetTreatments();
   }
 }
