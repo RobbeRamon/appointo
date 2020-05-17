@@ -39,14 +39,14 @@ export class LoginComponent implements OnInit {
               this.router.navigate(["/manage/calendar"]);
             }
           } else {
-            this.errorMessage = "Could not login";
+            this.errorMessage = "Inloggen niet mogelijk";
           }
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
-            this.errorMessage = `Error while trying to login user ${this.login.value.email}: ${err.error.message}`;
+            this.errorMessage = `Kon de gebruiker niet inloggen met email ${this.login.value.email}`;
           } else {
-            this.errorMessage = `Error ${err.status} while trying to login user ${this.login.value.email}: ${err.message}`;
+            this.errorMessage = `Kon de gebruiker niet inloggen met email ${this.login.value.email}`;
           }
         }
       );
