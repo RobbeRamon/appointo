@@ -37,7 +37,7 @@ export class EditTreatmentComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private _haridresserSettingsDataService: HairdresserSettingsDataService,
+    private _hairdresserSettingsDataService: HairdresserSettingsDataService,
     private router: Router
   ) {}
 
@@ -72,9 +72,9 @@ export class EditTreatmentComponent implements OnInit {
       this.treatmentForm.get("seconds").value
     );
     if (this.treatment.id != 0) {
-      this._haridresserSettingsDataService.changeTreatment(this.treatment);
+      this._hairdresserSettingsDataService.changeTreatment(this.treatment);
     } else {
-      this._haridresserSettingsDataService.createTreatment(this.treatment);
+      this._hairdresserSettingsDataService.createTreatment(this.treatment);
     }
 
     this.router.navigate(["/manage/treatments"]);

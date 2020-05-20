@@ -1,0 +1,14 @@
+<div class="container">
+    <form class="text-center border border-light p-5 mt-5" [formGroup]="hairdresserForm" (ngSubmit)="onSubmit()">
+        <p class="h4 mb-4">Verander je naam</p>
+        <input type="text" class="form-control mb-4" formControlName="name">
+        <div class="alert alert-danger" role="alert"
+            *ngIf="hairdresserForm.get('name')['errors'] && hairdresserForm.get('name').touched">
+            {{ getErrorMessage(hairdresserForm.get('name')['errors']) }}
+        </div>
+        <button mdbBtn color="primary" block="true" class="my-4" type="submit">Bevestig</button>
+    </form>
+    <div class="alert alert-success" role="alert" *ngIf="message">
+        {{ message }}
+    </div>
+</div>

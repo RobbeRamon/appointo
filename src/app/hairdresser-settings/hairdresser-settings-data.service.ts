@@ -5,6 +5,7 @@ import { catchError, tap, map } from "rxjs/operators";
 import { Workday, WorkdayJson } from "../workday.model";
 import { Observable, throwError, BehaviorSubject } from "rxjs";
 import { Treatment, TreatmentJson } from "../treatment.model";
+import { Hairdresser } from "../hairdresser.model";
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +15,6 @@ export class HairdresserSettingsDataService {
   private _currentWorkdays: Workday[];
   private _currentTreatments: Treatment[];
   private _currentTreatments$ = new BehaviorSubject<Treatment[]>([]);
-
   constructor(private http: HttpClient) {
     this.currentWorkdays$
       .pipe(
@@ -39,6 +39,12 @@ export class HairdresserSettingsDataService {
         this._currentTreatments = treatments;
         this._currentTreatments$.next(treatments);
       });
+  }
+
+  get loggedInHairdresser$() {
+    return this.http
+      .get(`${environment.apiUrl}/hairdressers/loggedinuser`)
+      .pipe(catchError(this.handleError), map(Hairdresser.fromJSON));
   }
 
   get allCurrentWorkdays$() {
@@ -78,7 +84,6 @@ export class HairdresserSettingsDataService {
   }
 
   changeWorkdays(workdays: Workday[]) {
-    //console.log(JSON.stringify(workdays.map((wd) => wd.toJSON())));
     this.http
       .post(
         `${environment.apiUrl}/manage/workdays`,
@@ -139,6 +144,12 @@ export class HairdresserSettingsDataService {
 
         this._currentTreatments$.next(this._currentTreatments);
       });
+  }
+
+  changeHairdresser$(hairdresser: Hairdresser) {
+    return this.http
+      .put(`${environment.apiUrl}/manage/hairdressers`, hairdresser)
+      .pipe(catchError(this.handleError), map(Hairdresser.fromJSON));
   }
 
   handleError(err: any): Observable<never> {

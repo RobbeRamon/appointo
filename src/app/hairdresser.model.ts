@@ -21,6 +21,10 @@ export class Hairdresser {
     return this._name;
   }
 
+  set name(name: string) {
+    this._name = name;
+  }
+
   get id() {
     return this._id;
   }
@@ -45,6 +49,13 @@ export class Hairdresser {
     this._cardImagePath = cardImagePath;
   }
 
+  toJSON(): HairdresserJson {
+    return <HairdresserJson>{
+      id: this.id,
+      name: this.name,
+    };
+  }
+
   static fromJSON(json: HairdresserJson): Hairdresser {
     const hairdresser = new Hairdresser(json.name);
     hairdresser._id = json.id;
@@ -60,7 +71,6 @@ export class Hairdresser {
     );
     hairdresser.bannerPath = json.bannerPath;
     hairdresser.cardImagePath = json.cardImagePath;
-    console.log(hairdresser.cardImagePath);
     return hairdresser;
   }
 }
