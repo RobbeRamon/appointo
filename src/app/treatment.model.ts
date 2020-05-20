@@ -52,7 +52,7 @@ export class Treatment {
     return this._name;
   }
 
-  get duration() {
+  get duration(): TimeSpan {
     return this._duration;
   }
 

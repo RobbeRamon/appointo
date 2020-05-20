@@ -23,11 +23,12 @@ export class CalendarComponent implements OnInit {
     this._appointmentData.addAppointmentsListener();
   }
 
-  addEvent(title: string, date: string, id: number) {
+  addEvent(title: string, date: Date, id: number, duration: number) {
     this.calendarEvents = this.calendarEvents.concat({
       title: title,
-      date: date,
+      start: date.toString(),
       url: `manage/appointment/${id}`,
+      end: add_minutes(date, duration),
     });
   }
 
@@ -35,12 +36,21 @@ export class CalendarComponent implements OnInit {
     this._appointmentData.allAppointemnts$.subscribe((apps: Appointment[]) => {
       this.calendarEvents = [];
       apps.forEach((app) => {
+        let durationInMinutes = app.treatments
+          .map((tr) => tr.duration.allInMinutes)
+          .reduce((res, value) => res + value);
+
         this.addEvent(
           `${app.firstname} ${app.lastname}`,
-          app.startMoment.toString(),
-          app.id
+          app.startMoment,
+          app.id,
+          durationInMinutes
         );
       });
     });
   }
 }
+
+let add_minutes = function (dt, minutes) {
+  return new Date(new Date(dt).getTime() + minutes * 60000);
+};

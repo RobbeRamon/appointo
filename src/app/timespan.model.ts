@@ -23,6 +23,10 @@ export class TimeSpan {
     return this._seconds;
   }
 
+  get allInMinutes(): number {
+    return this._hours * 60 + this._minutes;
+  }
+
   toJSON(): TimeSpanJson {
     return <TimeSpanJson>{
       hours: this._hours,

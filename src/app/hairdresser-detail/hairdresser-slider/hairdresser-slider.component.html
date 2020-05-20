@@ -1,29 +1,11 @@
 <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-    <!-- <mdb-carousel-item>
-        <div class="view w-100">
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
-            <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
-        </div>
-        <div class="carousel-caption">
-            <h2 class="h1-responsive">{{hairdresser.name}}</h2>
-        </div>
-    </mdb-carousel-item>
-    <mdb-carousel-item>
-        <div class="view w-100">
-            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
-            <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-        </div>
-        <div class="carousel-caption">
-            <h2 class="h1-responsive">{{hairdresser.name}}</h2>
-        </div>
-    </mdb-carousel-item> -->
     <mdb-carousel-item>
         <div class="view w-100">
             <div *ngIf="hairdresser.bannerPath else defaultImage">
                 <img class="d-block w-100 banner" [src]="createImagePath(hairdresser.bannerPath)" alt="Banner">
             </div>
             <ng-template #defaultImage>
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Banner">
+                <img class="d-block w-100 banner" src="https://i.imgur.com/bl28HBR.jpg" alt="Banner">
             </ng-template>
             <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
         </div>
