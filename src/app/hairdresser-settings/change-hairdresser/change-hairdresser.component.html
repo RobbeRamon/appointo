@@ -1,4 +1,7 @@
 <div class="container">
+    <div class="text-center mt-3">
+        <a [routerLink]="['/manage/settings']" mdbBtn color="primary" mdbWavesEffect>Terug</a>
+    </div>
     <form class="text-center border border-light p-5 mt-5" [formGroup]="hairdresserForm" (ngSubmit)="onSubmit()">
         <p class="h4 mb-4">Verander je naam</p>
         <input type="text" class="form-control mb-4" formControlName="name">
