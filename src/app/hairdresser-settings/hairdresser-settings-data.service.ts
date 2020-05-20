@@ -118,7 +118,6 @@ export class HairdresserSettingsDataService {
   }
 
   createTreatment(treatment: Treatment) {
-    console.log(treatment.toFullJSON());
     this.http
       .post(`${environment.apiUrl}/manage/treatments/`, treatment.toFullJSON())
       .pipe(catchError(this.handleError))
@@ -157,7 +156,6 @@ export class HairdresserSettingsDataService {
     if (err.error instanceof ErrorEvent) {
       errorMessage = `An error occurred: ${err.error.message}`;
     } else if (err instanceof HttpErrorResponse) {
-      console.log(err);
       errorMessage = `'${err.status} ${err.statusText}' when accessing '${err.url}'`;
     } else {
       errorMessage = err;
