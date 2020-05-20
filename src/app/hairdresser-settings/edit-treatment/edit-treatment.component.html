@@ -7,7 +7,7 @@
 
             Naam
             <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" formControlName="name"
-                placeholder="Name">
+                placeholder="Name" data-cy="name">
             <div class="alert alert-danger" role="alert"
                 *ngIf="treatmentForm.get('name')['errors'] && treatmentForm.get('name').touched">
                 {{ getErrorMessage(treatmentForm.get('name')['errors']) }}
@@ -15,7 +15,7 @@
 
             Prijs (in euro)
             <input type="number" id="defaultSubscriptionFormEmail" class="form-control mb-4" formControlName="price"
-                placeholder="Prijs" min="0">
+                placeholder="Prijs" min="0" data-cy="price">
             <div class="alert alert-danger" role="alert"
                 *ngIf="treatmentForm.get('price')['errors'] && treatmentForm.get('price').touched">
                 {{ getErrorMessage(treatmentForm.get('price')['errors']) }}
@@ -38,7 +38,7 @@
                     formControlName="hours" placeholder="Uren" min="0">
 
                 <input type="number" id="defaultSubscriptionFormEmail" class="form-control mb-4 col-4"
-                    formControlName="minutes" placeholder="Minuten" min="0">
+                    formControlName="minutes" placeholder="Minuten" min="0" data-cy="durationInMinutes">
 
                 <input type="number" id="defaultSubscriptionFormEmail" class="form-control mb-4 col-4"
                     formControlName="seconds" placeholder="Seconden" min="0">
@@ -63,8 +63,8 @@
                     [disabled]="treatmentForm.invalid">Wijzig</button>
             </div>
             <ng-template #newTreatment>
-                <button mdbBtn color="primary" block="true" type="submit"
-                    [disabled]="treatmentForm.invalid">Maak</button>
+                <button mdbBtn color="primary" block="true" type="submit" [disabled]="treatmentForm.invalid"
+                    id="confirmTreatment">Maak</button>
             </ng-template>
             <div class="alert alert-danger" role="alert"
                 *ngIf="treatmentForm.errors && treatmentForm.get('name').touched">

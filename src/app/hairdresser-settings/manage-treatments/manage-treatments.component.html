@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody *ngIf="treatments$ | async as treatments">
-            <tr mdbTableCol *ngFor="let treatment of treatments">
+            <tr mdbTableCol *ngFor="let treatment of treatments" data-cy="treatmentRow">
                 <th scope="row">{{treatment.id}}</th>
                 <td>{{treatment.name}}</td>
                 <td>{{giveCategoryString(treatment.category)}}</td>
@@ -42,7 +42,8 @@
         </div>
 
         <div class="col-8">
-            <a [routerLink]="['/manage/treatments/create/']" mdbBtn color="success" mdbWavesEffect>Nieuwe
+            <a [routerLink]="['/manage/treatments/create/']" mdbBtn color="success" mdbWavesEffect
+                id="createTreatment">Nieuwe
                 behandeling aanmaken</a>
         </div>
     </div>
