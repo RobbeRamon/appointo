@@ -1,12 +1,19 @@
 # Appointo
 
-> Appointo is a website where hairdressers have a profile and customers can book appointments.
+> Appointo is een website waak kappers een profiel kunnen aanmaken. Op dat profiel kunnen klanten behandelingen selecteren en een afspraak maken.
 
-## Progressie
-- [x] een correcte structuur voor de App
+## Installeren en starten
+```
+npm install
+npm start
+```
+## Enkele inloggegevens
+| E-mail                      |  Wachtwoord  |
+| --------------------------- | :----------: |
+| hairloungemarlies@gmail.com | P@ssword1111 |
+| alexa@gmail.com             | P@ssword1111 |
 
-- [ ] domeinmodel
+## Korte beschrijving
+Kapper kunnen een profiel maken. Daarbij kunnen ze behandelingen toevoegen. Elke behandeling heeft zijn eigen naam, duurtijd en prijs. Daarnaast zal een kapper opgeven wat de openingsuren van de zaak zijn aan de hand van werkblokken. Dit kan per dag in de week ingesteld worden. Als een kapper behandelingen en openingsuren heeft ingegeven kunnen bezoekers van de website een afspraak maken door behandelingen te kiezen. 
 
-- [ ] dataservice
-
-- [x] componenten in de gepaste module(s)
+![Landingpage](https://i.imgur.com/e0tPvEZ.png)
