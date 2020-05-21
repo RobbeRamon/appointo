@@ -1,5 +1,5 @@
-describe('Register test', function () {
-    it('singup new user', () => {
+describe('Login test', function () {
+    it('login user', () => {
         cy.visit("/login");
 
         cy.get('[data-cy=email]').type('alexa@gmail.com');
