@@ -80,8 +80,7 @@ export class AppointmentDataService {
 
   addAppointmentsListener() {
     this._hubConnection.on("appointments", (data) => {
-      this._appointments = data.map((val) => Appointment.fromJSON(val));
-      this._appointments$.next(this._appointments);
+      this.fetchAppointments();
     });
   }
 
