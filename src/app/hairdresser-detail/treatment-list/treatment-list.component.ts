@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Hairdresser } from "src/app/hairdresser.model";
-import { BookedTreatmentDataService } from "src/app/booked-treatment-data.service";
 import { Treatment } from "src/app/treatment.model";
 
 @Component({

@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable, EMPTY } from "rxjs";
 import { Treatment } from "src/app/treatment.model";
-import { ActivatedRoute, Router } from "@angular/router";
-import { HairdresserDataService } from "src/app/hairdresser-data.service";
+import { Router } from "@angular/router";
 import { HairdresserSettingsDataService } from "../hairdresser-settings-data.service";
 import { catchError } from "rxjs/operators";
 

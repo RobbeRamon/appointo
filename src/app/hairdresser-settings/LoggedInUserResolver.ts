@@ -5,7 +5,6 @@ import {
   RouterStateSnapshot,
 } from "@angular/router";
 import { Observable } from "rxjs";
-import { Treatment } from "../treatment.model";
 import { HairdresserSettingsDataService } from "./hairdresser-settings-data.service";
 import { Hairdresser } from "../hairdresser.model";
 

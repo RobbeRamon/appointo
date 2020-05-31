@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { HairdresserDataService } from "src/app/hairdresser-data.service";
 import { Hairdresser } from "src/app/hairdresser.model";
 import { BookedTreatmentDataService } from "src/app/booked-treatment-data.service";
 

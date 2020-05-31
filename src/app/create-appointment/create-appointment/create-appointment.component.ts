@@ -2,12 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { BookedTreatmentDataService } from "src/app/booked-treatment-data.service";
 import { Hairdresser } from "src/app/hairdresser.model";
-import {
-  FormGroup,
-  FormBuilder,
-  FormControl,
-  Validators,
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CreateAppointmentService } from "src/app/create-appointment.service";
 import { Observable } from "rxjs";
 
