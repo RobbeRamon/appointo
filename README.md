@@ -1,6 +1,6 @@
 # Appointo
 
-> Appointo is een website waak kappers een profiel kunnen aanmaken. Op dat profiel kunnen klanten behandelingen selecteren en een afspraak maken. Dit is de front-end van deze web applicatie.
+> Appointo is een website waar kappers een profiel kunnen aanmaken. Op dat profiel kunnen klanten behandelingen selecteren en een afspraak maken. Dit is de front-end van deze web applicatie.
 
 ## Installeren en starten
 ```
